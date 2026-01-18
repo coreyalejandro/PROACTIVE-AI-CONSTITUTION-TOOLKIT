@@ -1,0 +1,93 @@
+# PROACTIVE AI Constitution Toolkit - .gitignore
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data files (large files should not be committed)
+*.csv
+*.json
+*.jsonl
+*.parquet
+!**/schema.json
+!**/config.json
+
+# Model weights
+*.pt
+*.pth
+*.bin
+*.onnx
+*.safetensors
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# Node (if any JS tooling)
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Secrets (never commit)
+*secrets*
+*credentials*
+*.pem
+*.key
+
+# Draft/working files
+drafts/
+_drafts/
+WIP_*
+DRAFT_*
+
+# Large evaluation outputs (commit summaries, not raw data)
+eval_outputs/
+raw_results/
+
+# OpenMemory - IDE/Assistant specific rules
+.cursor/rules/openmemory.mdc

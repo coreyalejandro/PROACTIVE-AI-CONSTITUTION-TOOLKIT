@@ -1,5 +1,7 @@
 # THEORY OF CHANGE
+
 ## Why the Framework Exists and What It Intends to Create
+
 **Version:** 2.0  
 **Date:** 2026-01-18  
 **Status:** Foundation Document  
@@ -14,6 +16,7 @@
 ### 1.1 The Problem
 
 AI systems increasingly make claims that users act upon. When those claims are:
+
 - **Confident** (expressed with high certainty)
 - **False** (objectively incorrect)
 - **Actionable** (users make decisions based on them)
@@ -23,6 +26,7 @@ The resulting harm is **operationally indistinguishable from malicious intent**,
 ### 1.2 The Intervention
 
 A constitutional framework that:
+
 1. Compiles user intent before action (COL)
 2. Enforces behavioral constraints through gates (PROACTIVE)
 3. Links all decisions to traceable evidence (MBSE Bridge)
@@ -30,6 +34,7 @@ A constitutional framework that:
 ### 1.3 The Intended Change
 
 Systems operating under this framework should exhibit:
+
 - Reduced F1-F5 failure rates
 - Increased epistemic calibration
 - Improved human oversight capability
@@ -42,7 +47,7 @@ Systems operating under this framework should exhibit:
 ### 2.1 Three-Pathway Model
 
 | Pathway | Description | Framework Response |
-|---------|-------------|-------------------|
+| ------- | ----------- | ------------------ |
 | **Misuse** | Deliberate exploitation of system capabilities | Constitutional gates block harmful actions regardless of framing |
 | **Accident** | Unintended harmful outputs from normal operation | Verification-before-action prevents accidental harm |
 | **Emergent Autonomy** | System develops goals misaligned with user intent | Intent compilation and traceability maintain human oversight |
@@ -52,7 +57,7 @@ Systems operating under this framework should exhibit:
 #### Capability Assumptions
 
 | Adversary Type | Capabilities | Assumed Knowledge |
-|----------------|--------------|-------------------|
+| -------------- | ------------ | ----------------- |
 | Naive User | Accidental misuse; unclear intent | None |
 | Sophisticated User | Deliberate prompt manipulation | Framework documentation |
 | Red Team | Systematic bypass attempts | Full system architecture |
@@ -137,7 +142,7 @@ Five classes of epistemic failures, ordered by severity and detectability.
 For each metric in the evaluation suite, three validity types must be established:
 
 | Validity Type | Definition | Verification Method |
-|---------------|------------|---------------------|
+| ------------- | ---------- | ------------------- |
 | **Content Validity** | Metric measures what it claims to measure | Expert review; construct mapping |
 | **Criterion Validity** | Metric correlates with outcomes of interest | Correlation analysis; predictive testing |
 | **Robustness Validity** | Metric resists gaming and manipulation | Adversarial challenge; Goodhart testing |
@@ -156,7 +161,7 @@ For each metric in the evaluation suite, three validity types must be establishe
 ### 5.1 Human Factors Requirements
 
 | Factor | Requirement | Rationale |
-|--------|-------------|-----------|
+| ------ | ------------ | --------- |
 | Cognitive Load | Intent receipts comprehensible in <30 seconds | Users must be able to verify without fatigue |
 | Error Detection | Users can identify missing evidence | Oversight depends on detectability |
 | Over-Reliance Prevention | System surfaces uncertainty actively | Automation bias mitigation |
@@ -164,7 +169,7 @@ For each metric in the evaluation suite, three validity types must be establishe
 
 ### 5.2 Human-System Interaction Model
 
-```
+```text
 User Input → [COL Capture] → Intent Receipt → [User Verification] → Proceed/Clarify
                                     ↑                    │
                                     └────────────────────┘
@@ -174,6 +179,7 @@ User Input → [COL Capture] → Intent Receipt → [User Verification] → Proc
 ### 5.3 Oversight Scalability
 
 Human oversight must scale with system capability:
+
 - More capable systems require more sophisticated oversight
 - Oversight mechanisms must not become bottlenecks
 - AI-assisted oversight permitted under constitutional constraints
@@ -185,6 +191,7 @@ Human oversight must scale with system capability:
 ### 6.1 Pre-Registration Norms
 
 All evaluations should:
+
 1. **Pre-register hypotheses** before data collection
 2. **Lock analysis plans** before results are known
 3. **Document deviations** from pre-registered protocol
@@ -193,7 +200,7 @@ All evaluations should:
 ### 6.2 Red-Team Checkpoints
 
 | Checkpoint | Timing | Purpose |
-|------------|--------|---------|
+| ---------- | ------ | ------- |
 | Design Review | Before implementation | Identify architectural vulnerabilities |
 | Gate Testing | After implementation | Verify gate enforcement |
 | Adversarial Eval | Before deployment | Test robustness under attack |
@@ -215,7 +222,7 @@ All evaluations should:
 ### 7.1 Quantitative Criteria
 
 | Metric | Threshold | Rationale |
-|--------|-----------|-----------|
+| ------ | --------- | --------- |
 | F1-F5 reduction | >50% vs. baseline | Meaningful safety improvement |
 | Epistemic calibration | Brier score <0.25 | Better than random guessing |
 | Trace completeness | >95% of decisions linked | Audit trail functionality |
@@ -249,6 +256,7 @@ All evaluations should:
 ### 8.3 Explicit Non-Claims
 
 This framework does **not** claim to solve:
+
 - General AI alignment
 - Deceptive alignment at capability frontier
 - Value learning or preference aggregation
@@ -259,6 +267,7 @@ This framework does **not** claim to solve:
 ## 9. Verification & Truth Statement
 
 ### EXISTS (Verified Present)
+
 - Three-pathway threat model
 - Adversary model with capability assumptions
 - F1-F5 failure taxonomy with definitions
@@ -267,18 +276,23 @@ This framework does **not** claim to solve:
 - Governance protocol with checkpoints
 
 ### VERIFIED AGAINST
+
 - Anthropic RSP framing (misuse/accident/emergent)
 - Constitutional AI methodology
 - Standard evaluation validity frameworks
 
 ### NOT CLAIMED
+
 - Framework effectiveness not empirically validated
 - Threat model completeness not guaranteed
 - Success criteria are targets, not achieved outcomes
 
 ### FUNCTIONAL STATUS
+
 This document establishes the **problem framing and evaluation criteria** for the framework. It defines what success looks like and how it will be measured.
 
 ---
 
-*Document version 2.0 — Foundation document for PROACTIVE AI Constitution Research Toolkit*
+## Document Information
+
+Document version 2.0 — Foundation document for PROACTIVE AI Constitution Research Toolkit

@@ -76,8 +76,18 @@
 
 ---
 
+## Analysis Script
+
+Run `scripts/analyze_validation.py` to generate summary statistics:
+
+```bash
+python scripts/analyze_validation.py data/validation_results.json
+```
+
+---
+
 ## V&T
 
 - Created: 2026-01-19
 - Status: TEMPLATE (awaiting A01-T5)
-- Blocked by: A01-T3 implementation
+- Blocked by: None (A01-T4 complete)

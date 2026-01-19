@@ -15,12 +15,12 @@ Complete this on a GREEN day. Then these aren't blocking you on RED days.
 **Status**: [x] READY / [ ] BLOCKED BY: ___________
 
 ### GitHub with Actions (Adapter 02)
-- [ ] Repo exists: /Users/coreyalejandro/Projects/PROACTIVE-AI-CONSTITUTION-TOOLKIT
-- [ ] GitHub remote configured: `git remote -v`
-- [ ] Actions enabled: Repo → Settings → Actions → General → Allow all actions
-- [ ] Test workflow runs: Create `.github/workflows/test.yml`, push, check Actions tab
+- [x] Repo exists: /Users/coreyalejandro/Projects/PROACTIVE-AI-CONSTITUTION-TOOLKIT
+- [x] GitHub remote configured: `git remote -v` ✓
+- [x] Actions enabled: Repo → Settings → Actions → General → Allow all actions ✓
+- [x] Test workflow runs: `.github/workflows/test-actions.yml` ✓ (verified 2026-01-19, 8s run)
 
-**Status**: [ ] READY / [ ] BLOCKED BY: ___________
+**Status**: [x] READY / [ ] BLOCKED BY: ___________
 
 ### HELM (Adapter 03)
 - [x] Python environment ready: `python --version` (3.8+)

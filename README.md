@@ -295,6 +295,29 @@ Week 4: P3 Documents (Technical Depth)
 
 ---
 
+## Adapter Modules
+
+The PROACTIVE framework includes adapter modules that integrate with external tools to validate specific principles and invariants.
+
+| Adapter | Purpose | Validates | Status |
+|---------|---------|-----------|--------|
+| [01_WANDB_TRACE_ADAPTER](ADAPTER_MODULES/01_WANDB_TRACE_ADAPTER/) | Convert trace logs to W&B Tables for auditor analysis | Principle O (Observability) + I4 (Traceability) | ✅ Pilot Complete |
+| 02_CI_SAFETY_GATE | GitHub Actions workflow for Constitutional Validator | Principle V (Verification) | 🔲 Not Started |
+| 03_HELM_SAFETY_PROFILE | HELM wrapper for TruthfulQA evaluation | Principle T (Truth) | 🔲 Not Started |
+| 04_SAFETY_CASE_GENERATOR | Generate GSN safety cases from evidence | End-to-End Integration | 🔲 Not Started |
+
+### Adapter 01: W&B Trace Adapter (Pilot Complete)
+
+**Evidence Summary**: In a pilot study with 9 synthetic test cases covering F1 (overconfidence), F2 (phantom work), and F4 (incomplete trace) failure modes:
+
+- **52% reduction** in root cause attribution time vs. standard W&B tables
+- **100% accuracy** vs. 89% baseline accuracy
+- **Statistical significance**: p < 0.0001, Cohen's d = 3.31 (large effect)
+
+See [USE_CASE_EVIDENCE.md](ADAPTER_MODULES/01_WANDB_TRACE_ADAPTER/USE_CASE_EVIDENCE.md) for full validation report.
+
+---
+
 ## Contributing
 
 This is an active research project. Document creation follows the priority order specified above.

@@ -1,14 +1,23 @@
 # 09_SAFETY_CASE
 
-## Status: ⚠️ TO CREATE
+## Status: IN DEVELOPMENT
 
-This directory will contain the synthesis artifact—the complete safety case.
+This directory contains the safety case synthesis artifact—structured arguments linking PROACTIVE principles to evidence.
 
-## Planned Documents
+## Documents
 
-| Document | Purpose | Priority |
-|----------|---------|----------|
-| SAFETY_CASE_FULL.md | Complete claim→argument→evidence synthesis | **P1** |
+| Document | Purpose | Status |
+|----------|---------|--------|
+| [SAFETY_CASE_SKELETON.md](SAFETY_CASE_SKELETON.md) | GSN structure with argument strands and evidence registry | ✅ Created |
+| SAFETY_CASE_FULL.md | Complete claim→argument→evidence synthesis | 🔲 Pending |
+
+## Current Evidence
+
+| ID | Description | Source | Status |
+|----|-------------|--------|--------|
+| E-O1 | W&B Adapter pilot results | [Adapter 01](../ADAPTER_MODULES/01_WANDB_TRACE_ADAPTER/USE_CASE_EVIDENCE.md) | ✅ Complete (Pilot) |
+
+## Planned Documents (Original)
 
 ## Creation Criteria
 

@@ -26,16 +26,16 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | A01-T1 | Define schema | 2 | 45m | BOTH | P0-09 | COMPLETE |
 | A01-T2 | Create structure | 1 | 20m | BOTH | A01-T1 | COMPLETE |
-| A01-T3 | Implement core | 3 | 90m | BOTH | A01-T2 | NOT_STARTED |
-| A01-T4 | Create templates | 2 | 45m | BOTH | A01-T1 | NOT_STARTED |
-| A01-T5 | Run validation | 3 | 120m | BOTH | A01-T3, A01-T4 | NOT_STARTED |
-| A01-T6 | Integrate docs | 2 | 45m | BOTH | A01-T5 | NOT_STARTED |
+| A01-T3 | Implement core | 3 | 90m | BOTH | A01-T2 | COMPLETE |
+| A01-T4 | Create templates | 2 | 45m | BOTH | A01-T1 | COMPLETE |
+| A01-T5 | Run validation | 3 | 120m | BOTH | A01-T3, A01-T4 | COMPLETE |
+| A01-T6 | Integrate docs | 2 | 45m | BOTH | A01-T5 | COMPLETE |
 
 ## Adapter 02: CI Safety Gate
 
 | ID | Task | Tier | Est. | Pipeline | Depends | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| A02-T1 | Define schema | 2 | 45m | A | P0-09 | NOT_STARTED |
+| A02-T1 | Define schema | 2 | 45m | A | P0-09 | COMPLETE |
 | A02-T2 | Create structure | 1 | 20m | A | A02-T1 | NOT_STARTED |
 | A02-T3 | Implement core | 3 | 90m | A | A02-T2 | NOT_STARTED |
 | A02-T4 | Create templates | 2 | 45m | A | A02-T1 | NOT_STARTED |
@@ -79,8 +79,8 @@
 ---
 
 Last updated: 2026-01-19
-Current checkpoint: CP0 (Complete)
-Next task: A01-T3
+Current checkpoint: CP1 (Adapter 01 Complete)
+Next task: A02-T2
 
 ---
 

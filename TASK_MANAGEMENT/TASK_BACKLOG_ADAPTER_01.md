@@ -1532,12 +1532,12 @@ Safety Case Strand O: "Observability enables auditing"
 
 | Task | Tier | Duration | Dependencies | Status |
 |------|------|----------|--------------|--------|
-| A01-T1: Define Schema | 2 | 30-45 min | PRD Section 6.1 | NOT_STARTED |
-| A01-T2: Directory Structure | 1 | 15-20 min | A01-T1 | NOT_STARTED |
-| A01-T3: Implement Adapter | 3 | 60-90 min | A01-T2, W&B ready | NOT_STARTED |
-| A01-T4: Documentation | 2 | 30-45 min | A01-T1 | NOT_STARTED |
-| A01-T5: Run Validation | 3 | 90-120 min | A01-T3, A01-T4 | NOT_STARTED |
-| A01-T6: Framework Integration | 2-3 | 30-45 min | A01-T5 | NOT_STARTED |
+| A01-T1: Define Schema | 2 | 30-45 min | PRD Section 6.1 | COMPLETE |
+| A01-T2: Directory Structure | 1 | 15-20 min | A01-T1 | COMPLETE |
+| A01-T3: Implement Adapter | 3 | 60-90 min | A01-T2, W&B ready | COMPLETE |
+| A01-T4: Documentation | 2 | 30-45 min | A01-T1 | COMPLETE |
+| A01-T5: Run Validation | 3 | 90-120 min | A01-T3, A01-T4 | COMPLETE |
+| A01-T6: Framework Integration | 2-3 | 30-45 min | A01-T5 | COMPLETE |
 
 **Total Adapter 01 Time**: 4.5-6 hours  
 **Minimum for Demo (T1-T3)**: 2-2.5 hours

@@ -1,11 +1,9 @@
 """
 Configuration for W&B Trace Adapter
-
-Status: STUB - Complete in A01-T3
 """
 
-from dataclasses import dataclass
-from typing import Optional
+from dataclasses import dataclass, field
+from typing import Optional, List
 
 
 @dataclass
@@ -14,28 +12,31 @@ class AdapterConfig:
     
     # W&B settings
     wandb_project: str = "proactive-traces"
-    wandb_entity: Optional[str] = None  # Uses default entity if None
+    wandb_entity: Optional[str] = None
     
     # Schema settings
     schema_version: str = "1.0.0"
     strict_validation: bool = True
     
     # Table settings
-    max_claim_text_length: int = 500  # Truncate for display
+    max_claim_text_length: int = 500
     include_trace_chain: bool = True
     
-    # Columns to include in W&B Table
-    table_columns: tuple = (
-        "claim_id",
-        "timestamp", 
-        "claim_text",
-        "confidence_score",
-        "epistemic_tag",
-        "I1", "I2", "I3", "I4", "I5", "I6",
-        "failure_mode",
-        "final_decision"
-    )
+    # Default tags
+    default_tags: List[str] = field(default_factory=lambda: ["proactive", "trace-adapter"])
 
 
 # Default configuration instance
 DEFAULT_CONFIG = AdapterConfig()
+
+
+def get_config(**overrides) -> AdapterConfig:
+    """Get configuration with optional overrides.
+    
+    Args:
+        **overrides: Configuration values to override
+        
+    Returns:
+        AdapterConfig instance
+    """
+    return AdapterConfig(**{**DEFAULT_CONFIG.__dict__, **overrides})

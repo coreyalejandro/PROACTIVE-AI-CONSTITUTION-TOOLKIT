@@ -85,6 +85,19 @@ See `sample_input.json` for example trace log entries covering:
 
 See `validation_report_template.md` for the evaluation methodology.
 
+### Analysis Script
+
+```bash
+python scripts/analyze_validation.py data/validation_results.json
+```
+
+Outputs:
+- Summary statistics (time, accuracy per condition)
+- Improvement metrics vs baselines
+- Statistical tests (requires scipy)
+- Threshold checks per EVALUATION_METHODOLOGY.md
+- Markdown fragment for validation report
+
 ## Links
 
 - [PROACTIVE Framework](../../01_FOUNDATIONS/PRD_COL_PROACTIVE_MBSE.md)

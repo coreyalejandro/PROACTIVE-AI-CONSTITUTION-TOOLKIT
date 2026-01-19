@@ -6,13 +6,13 @@ Complete this on a GREEN day. Then these aren't blocking you on RED days.
 ## Required Accounts
 
 ### Weights & Biases (Adapter 01)
-- [ ] Account created: https://wandb.ai/
-- [ ] API key generated: Settings → API Keys
-- [ ] API key stored locally: `echo "YOUR_KEY" > ~/.wandb_key`
-- [ ] Test login: `wandb login`
+- [x] Account created: https://wandb.ai/ (coreyalejandro)
+- [x] API key generated: Settings → API Keys (v1 format, 86 chars)
+- [x] API key stored locally: ~/.netrc (auto-created by wandb login)
+- [x] Test login: `wandb login` ✓ verified 2026-01-19
 - [ ] Test project created: `wandb init`
 
-**Status**: [ ] READY / [ ] BLOCKED BY: ___________
+**Status**: [x] READY / [ ] BLOCKED BY: ___________
 
 ### GitHub with Actions (Adapter 02)
 - [ ] Repo exists: /Users/coreyalejandro/Projects/PROACTIVE-AI-CONSTITUTION-TOOLKIT
@@ -23,12 +23,12 @@ Complete this on a GREEN day. Then these aren't blocking you on RED days.
 **Status**: [ ] READY / [ ] BLOCKED BY: ___________
 
 ### HELM (Adapter 03)
-- [ ] Python environment ready: `python --version` (3.8+)
-- [ ] HELM installed: `pip install crfm-helm`
-- [ ] Test run: `helm-run --help`
+- [x] Python environment ready: `python --version` (3.8+)
+- [x] HELM installed: `pip install crfm-helm`
+- [x] Test run: `helm-run --help` ✓ (verified 2026-01-19)
 - [ ] Disk space available: HELM datasets can be large (10GB+)
 
-**Status**: [ ] READY / [ ] BLOCKED BY: ___________
+**Status**: [x] READY / [ ] BLOCKED BY: ___________
 
 ### Anthropic API (General)
 - [ ] API key available
@@ -59,8 +59,8 @@ All items checked = GREEN LIGHT for adapter development
 Any item blocked = Document blocker, seek help on YELLOW/GREEN day
 
 ---
-Last updated: 2026-01-19
-Blocking issues: [NONE / LIST]
+Last updated: 2026-01-19 (W&B + HELM verified)
+Blocking issues: NONE
 
 ---
 ## V&T

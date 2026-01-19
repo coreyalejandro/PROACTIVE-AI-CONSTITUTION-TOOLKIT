@@ -21,6 +21,7 @@ The PROACTIVE AI Constitution Toolkit is a research framework for building epist
 | `09_SAFETY_CASE/` | Safety case documentation | Stub |
 | `FUNDING_MATERIALS/` | Elevator pitch, budget, positioning | Created |
 | `TASK_MANAGEMENT/` | Execution infrastructure | Complete |
+| `ADAPTER_MODULES/` | Adapter implementations (01-04) | In Progress |
 
 ### Key Documents
 
@@ -41,6 +42,7 @@ The PROACTIVE AI Constitution Toolkit is a research framework for building epist
 | Evaluation Design | `05_EVALUATION_DESIGN/` | Pre-registered evaluation methodology |
 | Execution Infrastructure | `TASK_MANAGEMENT/` | DAG, pipelines, manifest, task backlogs |
 | Funding Materials | `FUNDING_MATERIALS/` | Pitch, budget, researcher positioning |
+| W&B Trace Adapter | `ADAPTER_MODULES/01_WANDB_TRACE_ADAPTER/` | Schema + samples for W&B Table integration |
 
 ## Patterns
 
@@ -58,4 +60,4 @@ The PROACTIVE AI Constitution Toolkit is a research framework for building epist
 
 ---
 
-Last updated: 2026-01-19 | Session 5
+Last updated: 2026-01-19 | Session 6 (A01-T1 Complete)

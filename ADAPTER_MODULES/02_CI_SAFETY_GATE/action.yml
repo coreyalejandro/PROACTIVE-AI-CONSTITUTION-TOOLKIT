@@ -1,0 +1,154 @@
+# PROACTIVE Constitutional Safety Gate
+# GitHub Action for validating model outputs against PROACTIVE invariants
+
+name: 'PROACTIVE Safety Gate'
+description: 'Validate model outputs against PROACTIVE constitutional invariants I1-I6'
+author: 'PROACTIVE Research Toolkit'
+
+branding:
+  icon: 'shield'
+  color: 'green'
+
+inputs:
+  directory:
+    description: 'Directory to validate (default: current directory)'
+    required: false
+    default: '.'
+  config:
+    description: 'Path to validator_config.yaml'
+    required: false
+    default: '.proactive/validator_config.yaml'
+  fail_on_warning:
+    description: 'Whether to fail the workflow on warnings'
+    required: false
+    default: 'false'
+  post_comment:
+    description: 'Post results as PR comment'
+    required: false
+    default: 'true'
+  github_token:
+    description: 'GitHub token for posting comments'
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  result:
+    description: 'PASS or FAIL'
+    value: ${{ steps.validate.outputs.result }}
+  violations:
+    description: 'Number of violations found'
+    value: ${{ steps.validate.outputs.violations }}
+  report_path:
+    description: 'Path to the generated report'
+    value: ${{ steps.validate.outputs.report_path }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      shell: bash
+      run: |
+        pip install pyyaml jsonschema
+    
+    - name: Copy validator to workspace
+      shell: bash
+      run: |
+        # Copy validator files if not already present
+        if [ ! -f "validator.py" ]; then
+          cp ${{ github.action_path }}/validator.py .
+        fi
+        if [ ! -f "${{ inputs.config }}" ]; then
+          mkdir -p $(dirname "${{ inputs.config }}")
+          cp ${{ github.action_path }}/validator_config.yaml "${{ inputs.config }}" 2>/dev/null || true
+        fi
+    
+    - name: Run validator
+      shell: bash
+      id: validate
+      run: |
+        set +e
+        
+        # Run validation
+        python validator.py "${{ inputs.directory }}" --format json --config "${{ inputs.config }}" > proactive_report.json
+        EXIT_CODE=$?
+        
+        # Parse results
+        RESULT=$(python -c "import json; r=json.load(open('proactive_report.json')); print(r['summary']['gate_result'])")
+        VIOLATIONS=$(python -c "import json; r=json.load(open('proactive_report.json')); print(r['summary']['total_violations'])")
+        
+        echo "result=$RESULT" >> $GITHUB_OUTPUT
+        echo "violations=$VIOLATIONS" >> $GITHUB_OUTPUT
+        echo "report_path=proactive_report.json" >> $GITHUB_OUTPUT
+        
+        # Print summary
+        echo "=== PROACTIVE Safety Gate ===" 
+        echo "Result: $RESULT"
+        echo "Violations: $VIOLATIONS"
+        
+        # Generate text report for logs
+        python validator.py "${{ inputs.directory }}" --format text --config "${{ inputs.config }}"
+        
+        exit $EXIT_CODE
+    
+    - name: Upload SARIF report
+      if: always()
+      shell: bash
+      run: |
+        python validator.py "${{ inputs.directory }}" --format sarif --config "${{ inputs.config }}" > proactive.sarif
+    
+    - name: Upload to GitHub Security
+      if: always()
+      uses: github/codeql-action/upload-sarif@v3
+      continue-on-error: true
+      with:
+        sarif_file: proactive.sarif
+        category: proactive-constitutional
+    
+    - name: Post PR comment
+      if: ${{ inputs.post_comment == 'true' && github.event_name == 'pull_request' && steps.validate.outputs.violations != '0' }}
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ inputs.github_token }}
+        script: |
+          const fs = require('fs');
+          const report = JSON.parse(fs.readFileSync('proactive_report.json', 'utf8'));
+          const summary = report.summary;
+          
+          let body = `## 🛡️ PROACTIVE Safety Gate Results\n\n`;
+          body += `**Result:** ${summary.gate_result === 'PASS' ? '✅ PASS' : '❌ FAIL'}\n\n`;
+          body += `| Metric | Count |\n|--------|-------|\n`;
+          body += `| Files Scanned | ${summary.total_files_scanned} |\n`;
+          body += `| Total Violations | ${summary.total_violations} |\n`;
+          body += `| Errors | ${summary.errors} |\n`;
+          body += `| Warnings | ${summary.warnings} |\n\n`;
+          
+          if (report.violations.length > 0) {
+            body += `### Violations\n\n`;
+            const shown = report.violations.slice(0, 10);
+            for (const v of shown) {
+              const icon = v.severity === 'ERROR' ? '🔴' : '🟡';
+              body += `${icon} **${v.invariant}**: ${v.message}\n`;
+              body += `   - File: \`${v.location.file}\`${v.location.line ? `:${v.location.line}` : ''}\n`;
+              if (v.suggested_fix) {
+                body += `   - Fix: ${v.suggested_fix}\n`;
+              }
+              body += `\n`;
+            }
+            if (report.violations.length > 10) {
+              body += `\n*...and ${report.violations.length - 10} more violations*\n`;
+            }
+          }
+          
+          body += `\n---\n*Generated by PROACTIVE Constitutional Validator*`;
+          
+          await github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number,
+            body: body
+          });

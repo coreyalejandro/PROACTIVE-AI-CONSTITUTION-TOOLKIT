@@ -36,9 +36,9 @@
 | ID | Task | Tier | Est. | Pipeline | Depends | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | A02-T1 | Define schema | 2 | 45m | A | P0-09 | COMPLETE |
-| A02-T2 | Create structure | 1 | 20m | A | A02-T1 | NOT_STARTED |
-| A02-T3 | Implement core | 3 | 90m | A | A02-T2 | NOT_STARTED |
-| A02-T4 | Create templates | 2 | 45m | A | A02-T1 | NOT_STARTED |
+| A02-T2 | Create structure | 1 | 20m | A | A02-T1 | COMPLETE |
+| A02-T3 | Implement core | 3 | 90m | A | A02-T2 | COMPLETE |
+| A02-T4 | Create templates | 2 | 45m | A | A02-T1 | COMPLETE |
 | A02-T5 | Run validation | 3 | 120m | A | A02-T3, A02-T4 | NOT_STARTED |
 | A02-T6 | Integrate docs | 2 | 45m | A | A02-T5 | NOT_STARTED |
 
@@ -78,9 +78,9 @@
 
 ---
 
-Last updated: 2026-01-19
+Last updated: 2026-01-20
 Current checkpoint: CP1 (Adapter 01 Complete)
-Next task: A02-T2
+Next task: A02-T5
 
 ---
 

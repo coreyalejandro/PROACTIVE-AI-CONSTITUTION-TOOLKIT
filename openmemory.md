@@ -43,7 +43,8 @@ The PROACTIVE AI Constitution Toolkit is a research framework for building epist
 | Execution Infrastructure | `TASK_MANAGEMENT/` | DAG, pipelines, manifest, task backlogs |
 | Funding Materials | `FUNDING_MATERIALS/` | Pitch, budget, researcher positioning |
 | W&B Trace Adapter | `ADAPTER_MODULES/01_WANDB_TRACE_ADAPTER/` | Trace log → W&B Tables (A01 COMPLETE) |
-| CI Safety Gate | `ADAPTER_MODULES/02_CI_SAFETY_GATE/` | GitHub Actions constitutional validator (A02 IN PROGRESS) |
+| CI Safety Gate | `ADAPTER_MODULES/02_CI_SAFETY_GATE/` | GitHub Actions constitutional validator (A02-T1-T4 COMPLETE) |
+| CI Safety Gate Test Cases | `ADAPTER_MODULES/02_CI_SAFETY_GATE/test_cases/` | 8 seeded I1-I6 test cases (all pass) |
 | Safety Case Skeleton | `09_SAFETY_CASE/SAFETY_CASE_SKELETON.md` | GSN structure with E-O1 evidence integrated |
 
 ## Patterns
@@ -62,4 +63,4 @@ The PROACTIVE AI Constitution Toolkit is a research framework for building epist
 
 ---
 
-Last updated: 2026-01-19 | Session 9 (A02-T1 Complete - CI Safety Gate schema defined)
+Last updated: 2026-01-20 | Session 11 (A02-T2,T3,T4 COMPLETE - validator and test cases verified)

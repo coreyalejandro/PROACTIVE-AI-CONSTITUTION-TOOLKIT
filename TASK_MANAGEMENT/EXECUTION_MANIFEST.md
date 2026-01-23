@@ -78,9 +78,17 @@
 
 ---
 
-Last updated: 2026-01-20
-Current checkpoint: CP1 (Adapter 01 Complete)
-Next task: A02-T5
+Last updated: 2026-01-23
+Current checkpoint: v1.0 SHIPPED
+Next milestone: v1.1 (A02-T5, A02-T6, A03)
+
+---
+
+## v1.0 Milestone Completed
+
+**Shipped:** 2026-01-23
+**Archive:** .planning/milestones/v1.0-*
+**Tag:** v1.0
 
 ---
 

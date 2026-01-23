@@ -63,4 +63,16 @@ The PROACTIVE AI Constitution Toolkit is a research framework for building epist
 
 ---
 
-Last updated: 2026-01-20 | Session 11 (A02-T2,T3,T4 COMPLETE - validator and test cases verified)
+Last updated: 2026-01-23 | v1.0 MILESTONE SHIPPED (Pipeline B MVP complete)
+
+## Milestone Status
+
+**v1.0 Pipeline B MVP:** SHIPPED 2026-01-23
+
+- P0 Foundation: 9/9 COMPLETE
+- A01 W&B Trace Adapter: 6/6 COMPLETE (E-O1 evidence integrated)
+- A02 CI Safety Gate: 4/6 COMPLETE (T5-T6 deferred to v1.1)
+
+**Archive:** `.planning/milestones/v1.0-*`
+
+**Next:** v1.1 - Complete A02 validation, wire GitHub Actions, begin A03 HELM

@@ -1,0 +1,42 @@
+_wandb:
+    value:
+        cli_version: 0.24.0
+        code_path: code/ADAPTER_MODULES/01_WANDB_TRACE_ADAPTER/adapter.py
+        e:
+            91kqr3gb8z96y38yl4pto0c3v4zldmvw:
+                args:
+                    - data/test_cases/case_01_clean_emit.json
+                    - proactive-test
+                    - --no-strict
+                codePath: ADAPTER_MODULES/01_WANDB_TRACE_ADAPTER/adapter.py
+                codePathLocal: adapter.py
+                email: corey@coreyalejandro.com
+                executable: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3
+                git:
+                    commit: 1e91b291e3d5d5b1dc5a2ff43108ad0591e1396d
+                    remote: https://github.com/coreyalejandro/PROACTIVE-AI-CONSTITUTION-TOOLKIT.git
+                host: Coreys-MacBook-Pro.local
+                os: macOS-15.7.4-arm64-arm-64bit-Mach-O
+                program: /Users/coreyalejandro/Projects/PROACTIVE-AI-CONSTITUTION-TOOLKIT/ADAPTER_MODULES/01_WANDB_TRACE_ADAPTER/adapter.py
+                python: CPython 3.13.1
+                root: /Users/coreyalejandro/Projects/PROACTIVE-AI-CONSTITUTION-TOOLKIT/ADAPTER_MODULES/01_WANDB_TRACE_ADAPTER
+                startedAt: "2026-01-23T12:50:29.260144Z"
+                writerId: 91kqr3gb8z96y38yl4pto0c3v4zldmvw
+        m: []
+        python_version: 3.13.1
+        t:
+            "1":
+                - 105
+            "2":
+                - 105
+            "3":
+                - 2
+                - 13
+                - 15
+                - 62
+            "4": 3.13.1
+            "5": 0.24.0
+            "10":
+                - 21
+            "12": 0.24.0
+            "13": darwin-arm64

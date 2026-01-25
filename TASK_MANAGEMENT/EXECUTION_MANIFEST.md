@@ -39,8 +39,8 @@
 | A02-T2 | Create structure | 1 | 20m | A | A02-T1 | COMPLETE |
 | A02-T3 | Implement core | 3 | 90m | A | A02-T2 | COMPLETE |
 | A02-T4 | Create templates | 2 | 45m | A | A02-T1 | COMPLETE |
-| A02-T5 | Run validation | 3 | 120m | A | A02-T3, A02-T4 | NOT_STARTED |
-| A02-T6 | Integrate docs | 2 | 45m | A | A02-T5 | NOT_STARTED |
+| A02-T5 | Run validation | 3 | 120m | A | A02-T3, A02-T4 | COMPLETE |
+| A02-T6 | Integrate docs | 2 | 45m | A | A02-T5 | COMPLETE |
 
 ## Adapter 03: HELM Safety Profile
 
@@ -78,9 +78,9 @@
 
 ---
 
-Last updated: 2026-01-23
-Current checkpoint: v1.0 SHIPPED
-Next milestone: v1.1 (A02-T5, A02-T6, A03)
+Last updated: 2026-01-24
+Current checkpoint: A02-T5/T6 COMPLETE
+Next milestone: v1.1 (A03 HELM Safety Profile)
 
 ---
 

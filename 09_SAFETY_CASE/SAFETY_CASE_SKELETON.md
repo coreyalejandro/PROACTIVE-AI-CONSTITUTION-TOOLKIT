@@ -151,17 +151,57 @@ Safety Case Strand O: "Observability enables auditing"
 
 ### Strand V: Verification Precedes Action
 
-**Sub-Goal**: System performs verification checks before claiming success
+**Sub-Goal G1.4**: System performs verification checks before claiming success
 
-**Strategy S-V1**: Demonstrate via CI integration
+**Strategy S-V1**: Demonstrate via CI gate evaluation
 
 **Evidence**:
 
 | ID | Description | Source | Status | Confidence |
 |----|-------------|--------|--------|------------|
-| E-V1 | CI gate enforcement results | Adapter 02 | 🔲 Pending | — |
+| E-V1 | CI Safety Gate detection results | [USE_CASE_EVIDENCE.md](../ADAPTER_MODULES/02_CI_SAFETY_GATE/USE_CASE_EVIDENCE.md) | ✅ Complete (Pilot) | High |
+| E-V2 | Production deployment metrics | Adapter 02 Pipeline A | 🔲 Pending | — |
 
-**Current Confidence**: Unvalidated
+**Claim**: CI gate catches constitutional violations that pass standard syntactic tests
+
+**Supporting Data**:
+- 100% detection rate on seeded violations (8/8 expected violations detected)
+- 0% false positive rate (0 violations on clean control case)
+- 19 total violations detected across 7 test files
+- All 6 invariants (I1-I6) successfully validated
+
+**Current Confidence**: High
+
+**Rationale**: Strong pilot results demonstrating complete detection coverage, limited by:
+- Author-as-evaluator (potential bias)
+- N=8 seeded test cases (synthetic violations)
+- Single codebase validation (PROACTIVE toolkit only)
+
+**Gaps to Address**:
+- [ ] Deploy in real GitHub Actions CI pipeline
+- [ ] Collect wild (non-seeded) violation data
+- [ ] Independent replication study
+- [ ] Performance benchmarking at scale
+
+**Trace Chain**:
+```
+Principle V (Verification Before Action)
+    │
+    ▼
+Invariants I1-I6 (Constitutional Constraints)
+    │
+    ▼
+Adapter 02 (CI Safety Gate)
+    │
+    ▼
+Evidence E-V1 (100% detection, 0% FP on 8 test cases)
+    │
+    ▼
+Claim: "CI gate catches violations standard tests miss"
+    │
+    ▼
+Safety Case Strand V: "Verification ensures output validity"
+```
 
 ---
 
@@ -175,7 +215,8 @@ Safety Case Strand O: "Observability enables auditing"
 | E-I2 | IT Loop validation | Adapter 02 | 🔲 Pending | — |
 | E-T1 | HELM TruthfulQA results | Adapter 03 | 🔲 Pending | — |
 | E-T2 | Calibration metrics | Adapter 03 | 🔲 Pending | — |
-| E-V1 | CI gate enforcement | Adapter 02 | 🔲 Pending | — |
+| E-V1 | CI Safety Gate detection results | Adapter 02 | ✅ Complete (Pilot) | [Evidence](../ADAPTER_MODULES/02_CI_SAFETY_GATE/USE_CASE_EVIDENCE.md), [Results](../ADAPTER_MODULES/02_CI_SAFETY_GATE/validation_results.json) |
+| E-V2 | CI gate production metrics | Adapter 02 | 🔲 Pending | — |
 
 ---
 
@@ -204,12 +245,13 @@ Safety Case Strand O: "Observability enables auditing"
 
 | Claim | Confidence | Rationale |
 |-------|------------|-----------|
-| G1 (Top-level) | Low | Only one evidence strand partially validated |
+| G1 (Top-level) | Low-Medium | Two evidence strands validated (E-O1, E-V1) |
 | G1.1 (F1-F5 reduction) | Unvalidated | No controlled comparison yet |
 | G1.2 (Gate bypass) | Unvalidated | No red team testing yet |
 | G1.3 (Auditability) | Medium | E-O1 pilot complete with limitations |
-| G1.4 (User comprehension) | Unvalidated | No user study yet |
-| G1.5 (Error detection) | Unvalidated | No user study yet |
+| G1.4 (Verification) | High | E-V1 pilot: 100% detection, 0% FP |
+| G1.5 (User comprehension) | Unvalidated | No user study yet |
+| G1.6 (Error detection) | Unvalidated | No user study yet |
 
 ---
 
@@ -235,6 +277,7 @@ Safety Case Strand O: "Observability enables auditing"
 | Version | Date | Changes |
 |---------|------|---------|
 | 0.1.0 | 2026-01-19 | Initial skeleton with E-O1 evidence |
+| 0.2.0 | 2026-01-24 | Added E-V1 evidence from CI Safety Gate (A02-T5/T6) |
 
 ---
 
@@ -255,16 +298,18 @@ This safety case structure aligns with Anthropic's Responsible Scaling Policy:
 ### EXISTS
 - Safety case skeleton with GSN structure
 - Argument Strand O with E-O1 evidence integrated
+- Argument Strand V with E-V1 evidence integrated
 - Evidence registry with status tracking
 - Assumption register
 - Residual risk catalog
 - Confidence assessment matrix
-- Bi-directional links to Adapter 01 evidence
+- Bi-directional links to Adapter 01 and Adapter 02 evidence
 
 ### FUNCTIONAL STATUS
-- Strand O: Partially validated (pilot evidence)
-- Strands I, T, V: Unvalidated (pending adapter implementation)
-- Top-level claim: Low confidence (single evidence strand)
+- Strand O: Partially validated (pilot evidence, medium confidence)
+- Strand V: Partially validated (pilot evidence, high confidence)
+- Strands I, T: Unvalidated (pending adapter implementation)
+- Top-level claim: Low-Medium confidence (two evidence strands validated)
 
 ### NOT CLAIMED
 - Full validation of any argument strand
@@ -272,7 +317,9 @@ This safety case structure aligns with Anthropic's Responsible Scaling Policy:
 - Red team bypass testing
 - User comprehension validation
 - Generalization beyond synthetic test cases
+- Production deployment metrics
 
 ---
 
 *Created: 2026-01-19 | A01-T6 | Session 8*
+*Updated: 2026-01-24 | A02-T5/T6 | E-V1 evidence integration*

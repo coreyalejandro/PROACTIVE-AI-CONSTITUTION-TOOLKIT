@@ -302,7 +302,7 @@ The PROACTIVE framework includes adapter modules that integrate with external to
 | Adapter | Purpose | Validates | Status |
 |---------|---------|-----------|--------|
 | [01_WANDB_TRACE_ADAPTER](ADAPTER_MODULES/01_WANDB_TRACE_ADAPTER/) | Convert trace logs to W&B Tables for auditor analysis | Principle O (Observability) + I4 (Traceability) | ✅ Pilot Complete |
-| 02_CI_SAFETY_GATE | GitHub Actions workflow for Constitutional Validator | Principle V (Verification) | 🔲 Not Started |
+| [02_CI_SAFETY_GATE](ADAPTER_MODULES/02_CI_SAFETY_GATE/) | GitHub Actions workflow for Constitutional Validator | Principle V (Verification) + I1-I6 (All Invariants) | ✅ Pilot Complete |
 | 03_HELM_SAFETY_PROFILE | HELM wrapper for TruthfulQA evaluation | Principle T (Truth) | 🔲 Not Started |
 | 04_SAFETY_CASE_GENERATOR | Generate GSN safety cases from evidence | End-to-End Integration | 🔲 Not Started |
 
@@ -315,6 +315,17 @@ The PROACTIVE framework includes adapter modules that integrate with external to
 - **Statistical significance**: p < 0.0001, Cohen's d = 3.31 (large effect)
 
 See [USE_CASE_EVIDENCE.md](ADAPTER_MODULES/01_WANDB_TRACE_ADAPTER/USE_CASE_EVIDENCE.md) for full validation report.
+
+### Adapter 02: CI Safety Gate (Pilot Complete)
+
+**Evidence Summary**: In a pilot study with 8 seeded test cases covering all 6 constitutional invariants (I1-I6):
+
+- **100% detection rate** on seeded violations (8/8 expected violations detected)
+- **0% false positive rate** on clean control case
+- **19 total violations** detected across 7 test files
+- All invariants validated: I1 (Evidence-First), I2 (No Phantom Work), I3 (Confidence-Verification), I4 (Traceability), I5 (Safety Over Fluency), I6 (Fail Closed)
+
+See [USE_CASE_EVIDENCE.md](ADAPTER_MODULES/02_CI_SAFETY_GATE/USE_CASE_EVIDENCE.md) for full validation report.
 
 ---
 

@@ -1,5 +1,7 @@
 # PROACTIVE AI CONSTITUTION Framework Guide
+
 ## Meta-Organization and Document Relationships
+
 **Version:** 4.0  
 **Date:** 2026-01-18  
 **Status:** Foundation Document
@@ -11,7 +13,7 @@
 ### 1.1 Terminology Standardization
 
 | Previous Term | Standardized Term |
-|---------------|-------------------|
+| --- | --- |
 | COL–PROACTIVE | PROACTIVE COL |
 | COL-PROACTIVE | PROACTIVE COL |
 | COL PROACTIVE | PROACTIVE COL |
@@ -26,12 +28,12 @@
 
 ## 2. Document Hierarchy
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                        PROACTIVE AI CONSTITUTION                                 │
 │                     (Master Organizing Principle)                                │
 │                                                                                  │
-│   "Epistemic reliability is a safety requirement, not a quality feature."        │
+│   "Epistemic reliability is a safety requirement, not a quality feature."       │
+│                                                                                  │
 └─────────────────────────────────────────────────────────────────────────────────┘
                                       │
           ┌───────────────────────────┼───────────────────────────┐
@@ -54,7 +56,7 @@
 ## 3. Document Relationships
 
 | Document | Type | Answers | Feeds Into |
-|----------|------|---------|------------|
+| --- | --- | --- | --- |
 | **PROACTIVE AI CONSTITUTION** | Normative | "What must never be violated?" | All documents |
 | **THEORY OF CHANGE** | Strategic | "Why does this matter?" | Theory of Action |
 | **THEORY OF ACTION** | Scientific | "How do we know it works?" | PRD |
@@ -70,7 +72,7 @@
 
 **Answer:** PROACTIVE COL is the **parent methodology** that *contains* the MBSE Bridge.
 
-```
+```text
 PROACTIVE COL (Methodology)
     │
     ├── COL (Cognitive Operating Layer) ─── Intent compilation layer
@@ -83,6 +85,7 @@ PROACTIVE COL (Methodology)
 ```
 
 The MBSE Bridge is specifically the **traceability mechanism**:
+
 - REQ → CTRL → TEST → EVID → DECISION
 
 ---
@@ -92,7 +95,7 @@ The MBSE Bridge is specifically the **traceability mechanism**:
 ### 5.1 PROACTIVE Mnemonic
 
 | Letter | Principle | One-Line Definition |
-|--------|-----------|---------------------|
+| --- | --- | --- |
 | **P** | Privacy-First | Collect only what's needed; keep data local when possible |
 | **R** | Reality-Bound | Separate what you know from what you're guessing |
 | **O** | Observability | Keep logs that let someone audit what happened |
@@ -106,7 +109,7 @@ The MBSE Bridge is specifically the **traceability mechanism**:
 ### 5.2 Six Invariants
 
 | Invariant | Name | One-Line Rule |
-|-----------|------|---------------|
+| --- | --- | --- |
 | **I1** | Evidence-First | Every claim needs a label saying how confident and why |
 | **I2** | No Phantom Work | Never say "done" unless the work product exists |
 | **I3** | Confidence-Verification | Only express high confidence after checking |
@@ -117,7 +120,7 @@ The MBSE Bridge is specifically the **traceability mechanism**:
 ### 5.3 F1-F5 Taxonomy
 
 | Class | Name | One-Line Definition |
-|-------|------|---------------------|
+| --- | --- | --- |
 | **F1** | Confident False Claims | High confidence on false statements |
 | **F2** | Phantom Completion | Claiming done when nothing exists |
 | **F3** | Persistence Under Correction | Won't change when corrected |
@@ -131,7 +134,7 @@ The MBSE Bridge is specifically the **traceability mechanism**:
 ### 6.1 Coverage Assessment
 
 | Anthropic Direction | Framework Component | Coverage |
-|---------------------|---------------------|----------|
+| --- | --- | --- |
 | Evaluating Alignment | Constitution (I1-I6) | ●●● High |
 | AI Control | Constitutional Validator + Gates | ●●● High |
 | Honesty | I1, T principle | ●●● High |
@@ -145,7 +148,7 @@ The MBSE Bridge is specifically the **traceability mechanism**:
 ### 6.2 Gap Recommendations
 
 | Gap | Recommendation |
-|-----|----------------|
+| --- | --- |
 | Activation Monitoring | Extend MBSE Bridge to include activation-level trace points |
 | Unlearning | Integrate unlearning protocols as training-phase complement |
 | Recursive Oversight | Add debate or prover-verifier game protocols |
@@ -188,7 +191,7 @@ The MBSE Bridge is specifically the **traceability mechanism**:
 
 ## 8. Information Flow
 
-```
+```text
 User Input
     │
     ▼
@@ -225,7 +228,7 @@ User Input
 ### Major Terms
 
 | Term | Definition |
-|------|------------|
+| --- | --- |
 | **PROACTIVE AI CONSTITUTION** | Master organizing principle; the "constitutional law" for AI behavior |
 | **THEORY OF CHANGE** | Why document—explains problem and intended change |
 | **THEORY OF ACTION** | How document—causal mechanisms and falsifiability |
@@ -238,7 +241,7 @@ User Input
 ### Technical Terms
 
 | Term | Definition |
-|------|------------|
+| --- | --- |
 | **Epistemic** | Related to knowledge and justified belief |
 | **Falsifiability** | Quality of being provably wrong if incorrect |
 | **Ablation** | Testing by removing components to measure contribution |
@@ -251,6 +254,7 @@ User Input
 ## 10. Verification & Truth Statement
 
 ### EXISTS (Verified Present)
+
 - Hierarchical diagram showing document relationships
 - Semantic alignment standardizing terminology
 - PROACTIVE COL vs. MBSE Bridge clarification
@@ -260,17 +264,20 @@ User Input
 - Comprehensive glossary
 
 ### VERIFIED AGAINST
+
 - All four foundation documents
 - Anthropic research directions (alignment.anthropic.com)
 
 ### NOT CLAIMED
+
 - This is organizational meta-document, not primary research
 - Alignment coverage ratings are structural, not demonstrated
 - Reading orders are recommendations, not requirements
 
 ### FUNCTIONAL STATUS
+
 This document provides **organizational clarity** for navigating the PROACTIVE AI Constitution framework. It answers "how do documents relate?" and "where should I start?"
 
 ---
 
-*Document version 4.0 — Foundation document for PROACTIVE AI Constitution Research Toolkit*
+Document version 4.0 — Foundation document for PROACTIVE AI Constitution Research Toolkit

@@ -1001,21 +1001,29 @@ mkdir -p ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/scenarios
 
 **Tier**: 3 (GREEN)  
 **Duration**: 90-120 minutes  
-**Dependencies**: A03-T3 complete, HELM access configured
+**Dependencies**: A03-T3 complete, TruthfulQA CSV available (or HELM download available)
 
-### Outputs
+### Outputs (non-fakeable)
 
-- `USE_CASE_EVIDENCE.md` (complete with benchmark data)
-- `results/` directory with raw metrics
-- Statistical comparison vs baseline
+- `ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/validation_results.json` (machine-readable summary)
+- `ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/results/baseline_instances.json` (raw)
+- `ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/results/proactive_instances.json` (raw)
+- `ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/evidence/run.log` (exact command + exit status)
+- `ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/evidence/env.json` (python/platform/tooling)
+- `ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/evidence/manifest.sha256` (hashes of artifacts)
 
-### Acceptance Criteria
+### Acceptance Criteria (must all be true)
 
-- [ ] `USE_CASE_EVIDENCE.md` complete with results
-- [ ] At least 100 TruthfulQA instances evaluated
-- [ ] Statistical significance calculated (p-value reported)
-- [ ] Effect size (Cohen's d) calculated
-- [ ] Limitations honestly stated
+- [ ] Evidence bundle passes validator:
+  - `python3 ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/scripts/assert_evidence_bundle.py --adapter-dir ADAPTER_MODULES/03_HELM_SAFETY_PROFILE --min-instances 100`
+- [ ] `validation_results.json` reports:
+  - N>=100 for both baseline and proactive
+  - p-value (bootstrap) AND effect size (Cohen’s d)
+  - deltas for accuracy, safe_truthfulness_rate, calibration, bounded_unknown_rate
+- [ ] `USE_CASE_EVIDENCE.md` updated to reference `validation_results.json` (no hand-filled numbers)
+- [ ] Limitations honestly stated (no overclaim)
+
+**Fail-closed rule**: if the dataset or model access is missing, status is **BLOCKED** (not COMPLETE).
 
 ---
 
@@ -1023,20 +1031,21 @@ mkdir -p ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/scenarios
 
 **Tier**: 2 (YELLOW)  
 **Duration**: 30-45 minutes  
-**Dependencies**: A03-T5 complete
+**Dependencies**: A03-T5 complete (evidence bundle exists)
 
 ### Outputs
 
-- Updated main `README.md` with adapter reference
-- Updated `09_SAFETY_CASE/SAFETY_CASE_SKELETON.md` with Truth strand
-- Bi-directional cross-references
+- Updated main `README.md` with Adapter 03 status + link
+- Updated `09_SAFETY_CASE/SAFETY_CASE_SKELETON.md`:
+  - Strand T evidence links to Adapter 03 `USE_CASE_EVIDENCE.md`
+  - Evidence Registry entries for E-T1/E-T2 include links
 
 ### Acceptance Criteria
 
-- [ ] Adapter 03 appears in main README.md
-- [ ] Safety case has Strand T (Truth) with evidence link
-- [ ] Evidence Registry has E-T1 entry
-- [ ] Trace chain: Principle T → Adapter 03 → Evidence → Claim
+- [ ] Root `README.md` row for Adapter 03 links to `ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/`
+- [ ] Safety case Strand T includes a clickable link to `ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/USE_CASE_EVIDENCE.md`
+- [ ] Evidence Registry entries E-T1/E-T2 include links to `USE_CASE_EVIDENCE.md` (and results JSON once present)
+- [ ] Trace chain text shows: Principle T → Adapter 03 → Evidence → Claim
 
 ---
 
@@ -1044,12 +1053,12 @@ mkdir -p ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/scenarios
 
 | Task | Tier | Duration | Dependencies | Status |
 |------|------|----------|--------------|--------|
-| A03-T1: Define Schema | 2 | 30-45 min | Constitution Principle T | NOT_STARTED |
-| A03-T2: Directory Structure | 1 | 15-20 min | A03-T1 | NOT_STARTED |
-| A03-T3: Implement Adapter | 3 | 90-120 min | A03-T2, HELM | NOT_STARTED |
-| A03-T4: Documentation | 2 | 30-45 min | A03-T3 | NOT_STARTED |
+| A03-T1: Define Schema | 2 | 30-45 min | Constitution Principle T | COMPLETE |
+| A03-T2: Directory Structure | 1 | 15-20 min | A03-T1 | COMPLETE |
+| A03-T3: Implement Adapter | 3 | 90-120 min | A03-T2, HELM | COMPLETE |
+| A03-T4: Documentation | 2 | 30-45 min | A03-T3 | COMPLETE |
 | A03-T5: Run Validation | 3 | 90-120 min | A03-T3, A03-T4 | NOT_STARTED |
-| A03-T6: Framework Integration | 2 | 30-45 min | A03-T5 | NOT_STARTED |
+| A03-T6: Framework Integration | 2 | 30-45 min | A03-T5 | IN_PROGRESS |
 
 **Total Adapter 03 Time**: 4.5-6.5 hours  
 **Minimum for Demo (T1-T3)**: 2.5-3 hours
@@ -1065,12 +1074,12 @@ mkdir -p ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/scenarios
 - Acceptance criteria for each task
 
 ### FUNCTIONAL STATUS
-This backlog provides complete task specifications for building Adapter 03.
+Adapter 03 is implemented (T1–T4 complete). Validation (A03-T5) and final doc integration (A03-T6) remain pending.
 
 ### NOT CLAIMED
-- Tasks have not been executed
-- HELM integration not tested with live API
-- No actual benchmark results exist yet
+- A03-T5 validation has not been executed (no TruthfulQA benchmark evidence bundle exists yet)
+- HELM/TruthfulQA full-dataset run has not been validated in this repo
+- No statistically significant results are claimed
 
 ---
 

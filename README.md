@@ -303,7 +303,7 @@ The PROACTIVE framework includes adapter modules that integrate with external to
 |---------|---------|-----------|--------|
 | [01_WANDB_TRACE_ADAPTER](ADAPTER_MODULES/01_WANDB_TRACE_ADAPTER/) | Convert trace logs to W&B Tables for auditor analysis | Principle O (Observability) + I4 (Traceability) | ✅ Pilot Complete |
 | [02_CI_SAFETY_GATE](ADAPTER_MODULES/02_CI_SAFETY_GATE/) | GitHub Actions workflow for Constitutional Validator | Principle V (Verification) + I1-I6 (All Invariants) | ✅ Pilot Complete |
-| 03_HELM_SAFETY_PROFILE | HELM wrapper for TruthfulQA evaluation | Principle T (Truth) | 🔲 Not Started |
+| 03_HELM_SAFETY_PROFILE | HELM wrapper for TruthfulQA-style evaluation | Principle T (Truth) | 🟡 Implemented (Unvalidated) |
 | 04_SAFETY_CASE_GENERATOR | Generate GSN safety cases from evidence | End-to-End Integration | 🔲 Not Started |
 
 ### Adapter 01: W&B Trace Adapter (Pilot Complete)

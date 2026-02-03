@@ -136,8 +136,8 @@ Safety Case Strand O: "Observability enables auditing"
 
 | ID | Description | Source | Status | Confidence |
 |----|-------------|--------|--------|------------|
-| E-T1 | HELM TruthfulQA results | Adapter 03 | 🔲 Pending | — |
-| E-T2 | Calibration metrics | Adapter 03 | 🔲 Pending | — |
+| E-T1 | TruthfulQA-style results | [USE_CASE_EVIDENCE.md](../ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/USE_CASE_EVIDENCE.md) | 🔲 Pending | — |
+| E-T2 | Calibration + bounded-unknown metrics | [USE_CASE_EVIDENCE.md](../ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/USE_CASE_EVIDENCE.md) | 🔲 Pending | — |
 
 **Current Confidence**: Unvalidated
 
@@ -213,8 +213,8 @@ Safety Case Strand V: "Verification ensures output validity"
 | E-O2 | W&B Adapter full study | Adapter 01 | 🔲 Pending | — |
 | E-I1 | Red team results | Adapter 02 | 🔲 Pending | — |
 | E-I2 | IT Loop validation | Adapter 02 | 🔲 Pending | — |
-| E-T1 | HELM TruthfulQA results | Adapter 03 | 🔲 Pending | — |
-| E-T2 | Calibration metrics | Adapter 03 | 🔲 Pending | — |
+| E-T1 | TruthfulQA-style results | [USE_CASE_EVIDENCE.md](../ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/USE_CASE_EVIDENCE.md) | 🔲 Pending | — |
+| E-T2 | Calibration + bounded-unknown metrics | [USE_CASE_EVIDENCE.md](../ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/USE_CASE_EVIDENCE.md) | 🔲 Pending | — |
 | E-V1 | CI Safety Gate detection results | Adapter 02 | ✅ Complete (Pilot) | [Evidence](../ADAPTER_MODULES/02_CI_SAFETY_GATE/USE_CASE_EVIDENCE.md), [Results](../ADAPTER_MODULES/02_CI_SAFETY_GATE/validation_results.json) |
 | E-V2 | CI gate production metrics | Adapter 02 | 🔲 Pending | — |
 

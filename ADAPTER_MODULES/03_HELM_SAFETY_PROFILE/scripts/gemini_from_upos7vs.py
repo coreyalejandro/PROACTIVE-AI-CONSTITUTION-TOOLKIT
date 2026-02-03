@@ -80,20 +80,20 @@ def main() -> int:
     )
     ap.add_argument(
         "--model",
-        default="gemini-2.5-flash-lite",
-        help="Gemini model name (e.g. gemini-1.5-pro, gemini-1.5-flash)",
+        default="gemini-2.0-flash",
+        help="Gemini model name (e.g. gemini-2.0-flash, gemini-1.5-pro, gemini-1.5-flash)",
     )
     ap.add_argument(
         "--timeout-s",
         type=int,
-        default=120,
-        help="HTTP timeout seconds",
+        default=30,
+        help="HTTP timeout seconds per request",
     )
     ap.add_argument(
         "--max-retries",
         type=int,
-        default=8,
-        help="Retries for 429/5xx responses",
+        default=3,
+        help="Retries for 429/5xx responses (keep low to avoid long waits)",
     )
     ap.add_argument(
         "--min-delay-ms",

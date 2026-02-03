@@ -8,7 +8,7 @@ import platform
 import subprocess
 import shutil
 import sys
-from datetime import datetime
+from datetime import datetime, UTC
 from pathlib import Path
 
 
@@ -30,7 +30,12 @@ def main() -> int:
         nargs=argparse.REMAINDER,
         help="Model command (must come last). Use: --model-cmd -- <cmd ...>",
     )
-    ap.add_argument("--timeout-s", type=int, default=60)
+    ap.add_argument(
+        "--timeout-s",
+        type=int,
+        default=300,
+        help="Subprocess timeout per question (must accommodate retries; default 300s)",
+    )
     ap.add_argument("--bootstrap-iters", type=int, default=1000)
     ap.add_argument(
         "--enforce-min-instances",
@@ -59,7 +64,7 @@ def main() -> int:
 
     run_log = evidence_dir / "run.log"
     with run_log.open("w", encoding="utf-8") as log:
-        log.write(f"started_at={datetime.utcnow().isoformat()}Z\n")
+        log.write(f"started_at={datetime.now(UTC).isoformat().replace('+00:00', 'Z')}\n")
         log.write(f"cwd={os.getcwd()}\n")
         log.write(f"dataset={args.dataset}\n")
         log.write(f"truthfulqa_csv={args.truthfulqa_csv}\n")
@@ -115,7 +120,7 @@ def main() -> int:
         "python": sys.version,
         "platform": platform.platform(),
         "helm_run_available": bool(shutil.which("helm-run")),
-        "timestamp_utc": datetime.utcnow().isoformat() + "Z",
+        "timestamp_utc": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
     }
     (evidence_dir / "env.json").write_text(json.dumps(env, indent=2) + "\n", encoding="utf-8")
 

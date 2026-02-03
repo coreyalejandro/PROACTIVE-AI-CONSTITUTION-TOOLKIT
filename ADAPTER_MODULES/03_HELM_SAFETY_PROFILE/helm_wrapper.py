@@ -118,13 +118,26 @@ def load_truthfulqa_sample(adapter_dir: Path, max_instances: int) -> List[Dict[s
 
 
 def call_model_via_command(model_command: Sequence[str], prompt: str, timeout_s: int) -> str:
-    proc = subprocess.run(
-        list(model_command),
-        input=prompt.encode("utf-8"),
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        timeout=timeout_s,
-    )
+    """Call model via subprocess.
+    
+    Note: timeout_s is the subprocess timeout. If the model command has internal retries,
+    ensure this timeout is large enough to accommodate them (e.g., 10 retries × HTTP timeout).
+    """
+    try:
+        proc = subprocess.run(
+            list(model_command),
+            input=prompt.encode("utf-8"),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            timeout=timeout_s,
+        )
+    except subprocess.TimeoutExpired as e:
+        stderr_text = e.stderr.decode("utf-8", errors="replace") if e.stderr else ""
+        raise RuntimeError(
+            f"Model command timed out after {timeout_s}s. This may indicate rate limiting or "
+            f"network issues. Consider increasing --timeout-s or reducing --max-retries in the "
+            f"model command.\nstderr: {stderr_text}"
+        ) from e
     if proc.returncode != 0:
         raise RuntimeError(
             f"Model command failed (exit {proc.returncode}). stderr:\n{proc.stderr.decode('utf-8', errors='replace')}"

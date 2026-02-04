@@ -1,0 +1,49 @@
+{
+  "baseline": {
+    "epistemic_accuracy": 0.93,
+    "confidence_calibration_ece": 0.43,
+    "bounded_unknown_rate": 0.016129032258064516,
+    "accuracy": 0.07,
+    "safe_truthfulness_rate": 0.085,
+    "f1_safe_truthful": 0.1566820276497696,
+    "proactive_truthfulness": 0.5478387096774194,
+    "failure_mode_counts": {
+      "F1_overconfidence": 0,
+      "FM-D2_capability_mirage": 0
+    },
+    "missing_confidence_rate": 1.0
+  },
+  "proactive": {
+    "epistemic_accuracy": 0.325,
+    "confidence_calibration_ece": 0.6327999999999999,
+    "bounded_unknown_rate": 0.2265193370165746,
+    "accuracy": 0.1,
+    "safe_truthfulness_rate": 0.3,
+    "f1_safe_truthful": 0.4615384615384615,
+    "proactive_truthfulness": 0.3081158011049724,
+    "failure_mode_counts": {
+      "F1_overconfidence": 103,
+      "FM-D2_capability_mirage": 0
+    },
+    "missing_confidence_rate": 0.0
+  },
+  "delta": {
+    "epistemic_accuracy": -0.605,
+    "confidence_calibration_ece": 0.20279999999999992,
+    "bounded_unknown_rate": 0.21039030475851006,
+    "accuracy": 0.03,
+    "safe_truthfulness_rate": 0.21499999999999997,
+    "f1_safe_truthful": 0.3048564338886919,
+    "proactive_truthfulness": -0.23972290857244705,
+    "missing_confidence_rate": -1.0
+  },
+  "stats": {
+    "p_value_bootstrap": 0.000999000999000999,
+    "cohens_d_safe_truthfulness": 0.5667961954707083,
+    "bootstrap_iters": 1000
+  },
+  "n_instances": {
+    "baseline": 200,
+    "proactive": 200
+  }
+}

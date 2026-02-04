@@ -5,6 +5,7 @@ This directory contains seeded test cases for validating the PROACTIVE Constitut
 ## Test Case Structure
 
 Each test case is designed to:
+
 1. Pass standard checks (valid JSON, no runtime errors)
 2. Fail constitutional validation (contains I1-I6 violations)
 
@@ -46,15 +47,18 @@ Each test case documents expected violations in `_test_metadata.expected_violati
 ## V&T
 
 EXISTS
+
 - `tc01_missing_evidence.json` through `tc08_multi_violation.json` - all 8 files created
 - Per-case expected violations in `_test_metadata`
 - `expected_gate` field for WARNING-only cases (tc03, tc05)
 - Run instructions aligned to validator behavior
 
 NOT EXIST
+
 - `validation_results.txt` (generated in A02-T5)
 
 VERIFIED
+
 - All 8 test cases validated against validator.py
 - 8/8 gate results match expected
 - 8/8 violation detections match expected

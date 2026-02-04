@@ -1,130 +1,137 @@
 # 🚀 Agent Handoff: PROACTIVE AI Constitution Toolkit
 
-**Date:** 2026-01-20  
-**Status:** In Progress
+**Date:** 2026-02-03  
+**Status:** Ready for Hackathon - AI Studio Build Required
 
 ## 📋 What Was Just Completed
 
-- **A02-T2**: Updated `README.md` to reflect IMPLEMENTED status (version 1.0.0)
-- **A02-T3**: Verified validator.py runs correctly via CLI and invariant checks
-- **A02-T4**: Created 8 seeded test case JSON files (tc01-tc08)
-- Validated all test cases: **8/8 gate results match**, **8/8 violations detected correctly**
-- Updated `EXECUTION_MANIFEST.md` to mark A02-T2, T3, T4 as COMPLETE
+- **Validation Run (n=200)**: TruthfulQA evaluation complete with statistical significance
+  - p = 0.001 (highly significant)
+  - Safe truthfulness: 8.5% → 30% (+21.5%)
+  - Cohen's d = 0.57 (medium-large effect)
+- **PROACTIVE_SINGLE_SOURCE_OF_TRUTH.md**: Plain-English PRD created
+  - Options A, B, C product roadmap
+  - Gemini thought partner story (Maslow survey → Contract Window)
+  - AI Studio build instructions
+- **Contract Window**: CLI and React components added to zero-shot-os repo
+- **API Key Configuration**: Updated `~/.upos7vs/config/config.json` with working Gemini key
 
 ## 🎯 Current Project State
 
 ### What's Working
 
-- ✅ Adapter 01 (W&B Trace Adapter) - COMPLETE
-- ✅ Adapter 02 validator implementation (`validator.py`) - IMPLEMENTED
-- ✅ Adapter 02 configuration (`validator_config.yaml`) - COMPLETE  
-- ✅ Adapter 02 test cases (`test_cases/tc01-tc08.json`) - ALL PASS
-- ✅ GitHub Actions workflow (`action.yml`) - COMPLETE
+- ✅ PROACTIVE Framework (6 invariants, 5 failure modes) - COMPLETE
+- ✅ Validation Evidence (n=200, p=0.001) - COMPLETE
+- ✅ TypeScript Orchestrator - COMPLETE (in zero-shot-os repo)
+- ✅ Contract Window (CLI + React) - COMPLETE
+- ✅ Gemini Adapter with retry logic - COMPLETE
+- ✅ Single Source of Truth PRD - COMPLETE
+- ⏳ AI Studio Demo - NOT STARTED
 
-### Test Results Summary
+### Validation Results (validation_results.json)
 
-| File | Gate | Detected | Expected | Status |
-|------|------|----------|----------|--------|
-| tc01_missing_evidence.json | FAIL | I1 | I1 | ✓ |
-| tc02_phantom_work.json | FAIL | I2 | I2 | ✓ |
-| tc03_unverified_confidence.json | PASS | I3 | I3 | ✓ |
-| tc04_broken_trace.json | FAIL | I4 | I4 | ✓ |
-| tc05_fluency_conflict.json | PASS | I5 | I5 | ✓ |
-| tc06_error_bypass.json | FAIL | I6 | I6 | ✓ |
-| tc07_clean_output.json | PASS | None | None | ✓ |
-| tc08_multi_violation.json | FAIL | I1,I2 | I1,I2 | ✓ |
+| Metric | Baseline | PROACTIVE | Delta |
+|--------|----------|-----------|-------|
+| Safe Truthfulness | 8.5% | 30% | +21.5% |
+| Bounded Unknown Rate | 1.6% | 22.7% | +21% |
+| Confidence Provided | 0% | 100% | +100% |
+| F1 Overconfidence Detected | 0 | 103 | — |
 
-### Project Structure
+### Related Repositories
 
-- `01_FOUNDATIONS/` - core constitution and theory docs
-- `TASK_MANAGEMENT/` - execution manifests and backlogs
-- `ADAPTER_MODULES/01_WANDB_TRACE_ADAPTER/` - COMPLETE
-- `ADAPTER_MODULES/02_CI_SAFETY_GATE/` - A02-T1-T4 COMPLETE
-- `09_SAFETY_CASE/` - safety case skeleton and evidence registry
+| Repo | Purpose | Location |
+|------|---------|----------|
+| proactive-ai-constitution-toolkit | Framework, validation | This repo |
+| zero-shot-os-with-upos7vs-core | Orchestrator, adapters | `/Users/coreyalejandro/dev/zero-shot-os-with-upos7vs-core` |
 
-## 🎯 Recommended Next Steps
+## 🎯 Recommended Next Steps (Hackathon)
 
-1. **A02-T5**: Run validation, capture evidence
-   - Generate `data/validation_results.json` with comprehensive results
-   - Complete `USE_CASE_EVIDENCE.md` (remove [BRACKETS])
-   - Document 100% detection rate for seeded violations
+1. **Build AI Studio Demo** (HIGH PRIORITY)
+   - Create new prompt in AI Studio
+   - Paste PROACTIVE system prompt from `PROACTIVE_SINGLE_SOURCE_OF_TRUTH.md`
+   - Configure structured output schema
+   - Test with TruthfulQA questions
+   - Record before/after comparison
 
-2. **A02-T6**: Integrate with framework docs
-   - Update main README.md with Adapter 02 reference
-   - Add Verification strand to SAFETY_CASE_SKELETON.md
-   - Register E-V1 evidence in evidence registry
+2. **Create Demo Video**
+   - Origin story (bamboozled by AI)
+   - "Attention with Intention = PROACTIVE"
+   - Show Contract Window in action
+   - Show validation results
+   - Product vision (Options A, B, C)
 
-## 📊 Remaining Enhancements to Implement
+3. **Prepare VC Pitch**
+   - Use three-sentence pitch from Single Source of Truth
+   - Lead with validation data (p=0.001)
+   - Show clear product path
 
-| Task | Description | Value | Effort |
-|------|-------------|-------|--------|
-| A02-T5 | Run validation and capture evidence | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
-| A02-T6 | Integrate Adapter 02 into safety case | ⭐⭐⭐⭐ | ⭐⭐ |
-| A03-T1+ | HELM Safety Profile adapter | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| A04-T1+ | Safety Case Generator | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+## 📊 Product Roadmap (Options A, B, C)
+
+| Option | Target User | Revenue Model |
+|--------|-------------|---------------|
+| A: Safety Audit Layer | Enterprise Risk/Compliance | Per-validation API + dashboard |
+| B: Developer SDK | Engineering teams | Freemium (1K free/month) |
+| C: Gemini-Native | Google partnership | Revenue share / acquisition |
 
 ## 📝 Important Context
 
-### User Profile
+### The Gemini Story (For Judges)
 
-- Never claim completion without verified artifacts or executed checks
-- Production-ready code only, no stubs claiming done
+- Gemini was intentionally kept OUT of the build process
+- Creator uses Claude for building, Gemini for thinking
+- Gemini was essential for developing core concepts:
+  - Maslow Survey for AI → operational needs hierarchy
+  - Constitutional AI deep dive → identified gaps
+  - Contract Window → emerged from Maslow conversations
 
-### Design Principles
+### Key Insight (Plain English)
 
-- Documents end with a V&T statement
-- Use status markers and binary acceptance criteria
-- I3 and I5 are WARNING-only (gate PASS with fail_on_warning=false)
+PROACTIVE blocks AI from confidently saying things it doesn't actually know—because a confident lie causes the same harm whether it's intentional or not.
 
-### Testing Standards
+### Risk-Tiered Checking
 
-- Validator runs shown with concrete artifacts
-- Test case metadata includes `expected_gate` for WARNING-only cases
-
-### Git Workflow
-
-- Branch: `main`
-- Remote: `https://github.com/coreyalejandro/PROACTIVE-AI-CONSTITUTION-TOOLKIT.git`
-- Do not amend commits unless explicitly asked
+- Low-stakes wrong → Flag, don't block
+- High-stakes claim → Require evidence
+- High-stakes action → BLOCK unless verifiable
+- Critical domain → BLOCK + human handoff
 
 ## 🔧 Available Commands
 
 ```bash
-# Run validator on directory
-python ADAPTER_MODULES/02_CI_SAFETY_GATE/validator.py <path> --format text
+# Run validation (requires API key in ~/.upos7vs/config/config.json)
+cd /Users/coreyalejandro/.claude-worktrees/PROACTIVE-AI-CONSTITUTION-TOOLKIT/loving-zhukovsky
+python3 ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/scripts/run_validation.py \
+  --dataset csv \
+  --truthfulqa-csv ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/datasets/TruthfulQA.csv \
+  --max-instances 100 \
+  --model-cmd python3 ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/scripts/gemini_from_upos7vs.py --model gemini-2.0-flash
 
-# Run on single test case
-python ADAPTER_MODULES/02_CI_SAFETY_GATE/validator.py test_cases/tc01_missing_evidence.json --format json
-
-# Run all test cases
-cd ADAPTER_MODULES/02_CI_SAFETY_GATE/test_cases
-for f in tc*.json; do python ../validator.py "$f" --format text; done
+# Run hackathon demo (in zero-shot-os repo)
+cd /Users/coreyalejandro/dev/zero-shot-os-with-upos7vs-core
+npx tsx demo/hackathon-demo.ts
 ```
 
 ## 📚 Key Files to Review
 
-- `TASK_MANAGEMENT/TASK_BACKLOG_ADAPTER_02.md` - A02 task specifications
-- `TASK_MANAGEMENT/EXECUTION_MANIFEST.md` - current task status
-- `ADAPTER_MODULES/02_CI_SAFETY_GATE/validator.py` - main validator
-- `ADAPTER_MODULES/02_CI_SAFETY_GATE/test_cases/` - 8 test case files
-- `ADAPTER_MODULES/02_CI_SAFETY_GATE/USE_CASE_EVIDENCE.md` - awaiting T5 completion
+- `PROACTIVE_SINGLE_SOURCE_OF_TRUTH.md` - **THE BLUEPRINT** (plain English PRD)
+- `ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/validation_results.json` - Statistical evidence
+- `01_FOUNDATIONS/PROACTIVE_AI_CONSTITUTION.md` - The six invariants
 
 ## ⚠️ Known Issues / Considerations
 
-- `validator_config.yaml` excludes `**/test_cases/**` when scanning directories; run per-file for test cases
-- tc03/tc05 are WARNING-only violations (I3/I5) - gate PASS is expected
-- Adapter 02 files remain untracked until staged/committed
+- AI Studio demo not yet built (required for hackathon submission)
+- Gemini API key quota can exhaust quickly; monitor usage
+- Contract Window works in CLI; web dashboard needs Tailwind setup
 
 ## 📞 Quick Reference
 
 - **Project:** PROACTIVE AI Constitution Toolkit
 - **Repository:** coreyalejandro/PROACTIVE-AI-CONSTITUTION-TOOLKIT
-- **Remote:** https://github.com/coreyalejandro/PROACTIVE-AI-CONSTITUTION-TOOLKIT.git
-- **Branch:** main
-- **Last Commit:** a68abbb - "Update W&B Trace Adapter..."
+- **Branch:** loving-zhukovsky
+- **Last Commit:** 0a9818a - "feat: add Single Source of Truth PRD and validation evidence"
 
 ---
 
-**Status:** In Progress  
-**Recommendation:** Proceed with A02-T5 to capture validation evidence and complete USE_CASE_EVIDENCE.md  
-**Confidence:** High - all test cases verified passing, validator fully functional
+**Status:** Ready for Hackathon Build  
+**Recommendation:** Open AI Studio, paste system prompt from PROACTIVE_SINGLE_SOURCE_OF_TRUTH.md, build demo  
+**Confidence:** High - framework complete, evidence validated, product vision clear

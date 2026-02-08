@@ -46,10 +46,10 @@
 
 | ID | Task | Tier | Est. | Pipeline | Depends | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| A03-T1 | Define schema | 2 | 45m | A | P0-09 | COMPLETE |
-| A03-T2 | Create structure | 1 | 20m | A | A03-T1 | COMPLETE |
-| A03-T3 | Implement core | 3 | 120m | A | A03-T2 | COMPLETE |
-| A03-T4 | Create templates | 2 | 45m | A | A03-T1 | COMPLETE |
+| A03-T1 | Define schema | 2 | 45m | A | P0-09 | NOT_STARTED |
+| A03-T2 | Create structure | 1 | 20m | A | A03-T1 | NOT_STARTED |
+| A03-T3 | Implement core | 3 | 120m | A | A03-T2 | NOT_STARTED |
+| A03-T4 | Create templates | 2 | 45m | A | A03-T1 | NOT_STARTED |
 | A03-T5 | Run validation | 3 | 120m | A | A03-T3, A03-T4 | NOT_STARTED |
 | A03-T6 | Integrate docs | 2 | 45m | A | A03-T5 | NOT_STARTED |
 
@@ -77,23 +77,3 @@
 | **Pipeline A Total** | 33 | ~30 hours |
 
 ---
-
-Last updated: 2026-02-02
-Current checkpoint: A03-T1–T4 COMPLETE (implementation); A03-T5 pending validation
-Next milestone: A03-T5/T6 (validation + doc finalization)
-
----
-
-## v1.0 Milestone Completed
-
-**Shipped:** 2026-01-23
-**Archive:** .planning/milestones/v1.0-*
-**Tag:** v1.0
-
----
-
-## V&T
-
-- Created: 2026-01-19T07:00:00Z
-- Status: COMPLETE
-- Blocked by: nothing

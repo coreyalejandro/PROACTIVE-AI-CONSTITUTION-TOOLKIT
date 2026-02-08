@@ -1,20 +1,30 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# PROACTIVE · Research Origin Story
 
-# Run and deploy your AI Studio app
+A magazine-style visualization of why PROACTIVE exists: the origin story (being misled by AI), the research path (2022–2026), and the six rules we enforce. Written so anyone can follow—Genesis (The Bamboozle), Chronicle (timeline), Six Invariants, and PROACTIVE Protocol.
 
-This contains everything you need to run your app locally.
+Part of the [PROACTIVE-AI-CONSTITUTION-TOOLKIT](https://github.com/coreyalejandro/PROACTIVE-AI-CONSTITUTION-TOOLKIT) repo. See [INTEGRATION.md](./INTEGRATION.md) for how this app fits the hackathon narrative and evidence.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1hwGsYvqYfIoME8O_W5PrY_UBGztikuOU
+## Run locally
 
-## Run Locally
+**Prerequisites:** Node.js 18+
 
-**Prerequisites:**  Node.js
+1. Install dependencies: `npm install`
+2. (Optional) For AI-powered content editing, set `GEMINI_API_KEY` in `.env.local`
+3. Run: `npm run dev`
 
+Open [http://localhost:3000](http://localhost:3000).
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## AI Studio
+
+This app can run in Google AI Studio. The `index.html` import map uses `aistudiocdn.com` for React, Framer Motion, etc.
+
+## Contents
+
+- **Genesis** — “The Bamboozle” (Malcolm X quote), origin narrative
+- **Chronicle** — Interactive timeline: 2022 Disconnect → 2023 Mapping the Void → 2024 MBSE Bridge → 2025 Invariant Lock → 2026 The Incident
+- **MBSE Bridge** — REQ → CTRL → TEST → EVID → DECISION traceability
+- **Six Invariants** — I1–I6 from the PROACTIVE Constitution
+- **PROACTIVE Protocol** — P-R-O-A-C-T-I-V-E mnemonic and risk tiers
+- **Author** — Lead researcher section
+
+All simulations use simple diagrams and plain language so anyone can understand. Editable sections (Genesis, Chronicle, Invariants) can be updated via the Neural Content Editor when `GEMINI_API_KEY` is set.

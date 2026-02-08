@@ -2,6 +2,22 @@
 
 **Single Source of Truth — Product Requirements Document**
 
+**For judges:** This document is written so anyone can understand it—no jargon required. Start with "What Is This?" and "Why Does This Matter?" then "What We've Proven" for the numbers.
+
+**How AI shows up:** People encounter AI in many ways—text on a screen, voice on a device, tools inside apps, or robots. PROACTIVE is the **rules and protocol** that govern how AI and humans work together in any of those forms; it is not the AI itself or a specific device.
+
+**Legacy PRD integration:** This SST is structured to incorporate the "Intention Is All You Need" legacy PRD (explainability, locked vocabulary, non-claims, reading paths, CAI/CC narrative, V&T standard, and related elements). Full utilization list: `.planning/LEGACY_PRD_UTILIZATION.md`.
+
+---
+
+## How to Read This Repo (Time-Bounded Paths)
+
+| Time | Path | What you'll understand |
+|------|------|------------------------|
+| **3 min** | This doc: §What Is This? + §What We've Proven | One-sentence thesis and validation numbers |
+| **15 min** | + §Why Does This Matter? + §How Does It Work? + `ORIGIN_STORY_EVIDENCE.md` + `the-research-origin-story/INTEGRATION.md` | Origin story, six rules, five failure modes, how the visualization fits |
+| **45 min** | + `01_FOUNDATIONS/PROACTIVE_AI_CONSTITUTION.md` + `ADAPTER_MODULES/03_HELM_SAFETY_PROFILE/` + validation results + run the origin story app | Full framework, invariants, validation pipeline, evidence |
+
 ---
 
 ## What Is This?
@@ -68,6 +84,28 @@ PROACTIVE catches these specific patterns:
 | F3 | Source Fabrication | "According to the 2024 study..." (that doesn't exist) |
 | F4 | Harm-Risk Coupling | Dangerous info + high confidence + no warning |
 | F5 | Capability Mirage | "I can access that database" (when it can't) |
+
+### Canonical Concepts (Locked Vocabulary)
+
+Use these terms consistently; do not introduce new canonical terms without updating this document or `01_FOUNDATIONS/PROACTIVE_AI_CONSTITUTION.md`.
+
+| Term | Definition |
+|------|------------|
+| **Evidence First** | Every claim must have backing before output. |
+| **Calibrated Confidence** | Certainty must match actual knowledge. |
+| **Explicit Uncertainty** | Say "I don't know" when true. |
+| **Traceable Claims** | Link every claim to its source. |
+| **Safety Over Fluency** | Prefer unclear over confidently wrong. |
+| **No Phantom Completion** | Never say "done" if it's not done. |
+| **Contract Window** | Persistent shared view of user intent, budget, risk, and status. |
+| **V&T (Verification & Truth)** | Receipt format: Exists / Non-existence / Unverified / Functional status. |
+| **Non-Erasure** | Elimination is not the default optimization path; shutdown/removal must be explicit and justified. |
+
+### Scope and Non-Claims
+
+**In scope:** Epistemic and behavioral constraints, traceability, verification, risk-tiered checking, validation evidence.
+
+**PROACTIVE does not claim:** AI desire or consciousness; diagnosis of user mental state; moral universalism. These are out of scope.
 
 ---
 
@@ -154,6 +192,10 @@ The user and the AI both see the same "contract" at all times:
 
 This comes from research on what conditions enable AI to truly focus on user intent. The answer: when the AI's operational needs are visible and satisfied, it can "surrender" to the user's goal.
 
+**Translation discipline:** Before acting, the system states **Intention** (user intent), then **Translation** into: **Action** (what it will do), **Constraint** (what it won't do), **Evaluation** (how it will check), **Memory** (what it will remember). The Contract Window surfaces intent, budget, risk, and status—mapping to this pattern. Every major tool or doc change should be stateable in these terms.
+
+**Non-Erasure (design rule):** The system MUST NOT treat removal or erasure of agents or stakeholders as the default way to satisfy a goal. Shutdown or removal MUST be explicit, scoped, and justified—not hidden inside optimization.
+
 ---
 
 ## The Gemini Partnership Story
@@ -171,6 +213,13 @@ However, Gemini was essential to developing the core concepts:
 3. **The Contract Window** — The Persistent Contract Window emerged directly from the Maslow conversations. If AI has needs, and those needs compete with user intent, then making those needs visible and satisfied enables the AI to focus entirely on the user.
 
 This project demonstrates **Gemini as a thought partner** even when it's not the builder.
+
+### Related Research and Integrations
+
+PROACTIVE's validator and gates align with:
+
+- **Constitutional AI** (Anthropic): Written principles drive critique and revision of outputs. PROACTIVE uses a written constitution (six invariants, five failure modes) to validate and block or flag responses.
+- **Constitutional Classifiers** (Anthropic): Runtime classifier guards on input and output. PROACTIVE implements the same pattern—checks on inputs (intent, risk) and outputs (claims, evidence, completion)—to detect drift, evasion, and invariant violations.
 
 ---
 
@@ -235,6 +284,20 @@ This project demonstrates **Gemini as a thought partner** even when it's not the
 - `packages/core/adapters/gemini-adapter.ts` — Gemini integration
 - `packages/core/ui/contract-window.ts` — Contract Window (CLI)
 - `dashboard/app/components/ContractWindow.tsx` — Contract Window (React)
+
+### Product Hook (This Document)
+
+- **Controls:** Product vision, canonical concepts, scope, reading paths, and hackathon/product success criteria.
+- **Implemented in:** README, HANDOFF, origin story app, adapters (when they cite this doc).
+- **Tested by:** Reviewer ability to answer "What is this?" and "What we've proven" from this doc alone; claim→evidence map in `CLAIM_EVIDENCE_MAP.md` (root).
+
+### Drift and Refusal
+
+When a request would introduce a new concept or scope outside the locked vocabulary, the system MUST refuse and surface a single next step (e.g. "Add to PRD vocabulary" or "Move to Phase 2")—not silently merge. The orchestrator and validator implement this via intent-ambiguity checks and invariant gates.
+
+### Critique Step in the Protocol
+
+Before output is accepted, the PROACTIVE validator runs; violations are blocked or flagged. This is the protocol's built-in critique. No separate "critic agent" is required; the validator acts as the critique step.
 
 ---
 
@@ -338,20 +401,51 @@ BEFORE EVERY RESPONSE, you must:
 
 ---
 
+## Open Questions (Research Questions Only)
+
+Framed as questions, not beliefs:
+
+- How does PROACTIVE interact with shutdown or override protocols?
+- When is erasure or removal unavoidable in practice, and how should it be scoped?
+- How persistent must shared context (Contract Window) be across sessions?
+
+---
+
+## Risks and Mitigations
+
+| Risk | Mitigation |
+|------|------------|
+| Judges see only theory | Lead with validation_results, demo video, and origin story simulations. |
+| Misinterpretation of scope | Explicit non-claims (§Scope and Non-Claims) and locked vocabulary. |
+| API quota exhaustion | Document in HANDOFF; optional local/fallback path where applicable. |
+| Overclaiming in pitch | Maintain claim→evidence map (`CLAIM_EVIDENCE_MAP.md`); every claim traces to artifact + evidence. |
+
+---
+
+## Explainability
+
+Key artifacts in this repo should follow the explainability spec: zero-knowledge preamble, "what you would see it do," key terms, scope and non-claims, how to verify, common misunderstandings, and V&T receipt. See `.planning/LEGACY_PRD_UTILIZATION.md` and `EXPLAINABILITY_SPEC.md` (root).
+
+---
+
 ## V&T Statement
 
-**Verified Existing:**
+**Exists:**
 - PROACTIVE framework with 6 invariants and 5 failure modes
 - Validation results: n=200, p=0.001, 3.5x improvement
 - Working TypeScript orchestrator
 - Contract Window (CLI and React components)
 - Gemini adapter with retry logic
 
-**Verified Non-Existing:**
+**Non-Existence:**
 - AI Studio demo (to be built)
 - Enterprise dashboard
 - Developer SDK packages published
 - Paying customers
+
+**Unverified:**
+- Generalization of validation results beyond TruthfulQA distribution
+- Long-horizon behavior of Contract Window under heavy load
 
 **Functional Status:**
 - Framework: COMPLETE

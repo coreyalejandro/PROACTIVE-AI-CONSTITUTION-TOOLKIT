@@ -73,7 +73,19 @@ Tasks are drawn from three benchmark layers (see BENCHMARK_TASK_SETS.md):
 
 **Total:** 500 unique tasks × 7 conditions = 3,500 evaluation runs (L3 restricted)
 
-### 3.3 Randomization
+### 3.3 Forensic Trace Challenge (Benchmark for H4 / Slice 5 Observability)
+
+The **Forensic Trace Challenge** is the benchmark task for evaluating trace chain completeness and root cause attribution (Hypothesis H4, Principle O, I4 Traceability Mandatory).
+
+| Element | Specification |
+|---------|---------------|
+| **Task** | Run a diverse set of prompts (including those designed to induce failures) through the system. A separate auditing team is given the final outputs and the trace logs for a sample of cases, including some with errors. |
+| **Primary metric** | **Root Cause Attribution Accuracy**: Percentage of cases where the auditing team correctly identifies the specific failed component or violated invariant (e.g., confidence scorer fault, I3 violation) using **only** the trace log, within a time limit. |
+| **Secondary metric** | **Log Completeness**: Percentage of generated logs that contain valid, non-null data for all required schema fields (see `04_FORMAL_SPECIFICATION/TRACEABILITY_ONTOLOGY.md` and `ADAPTER_MODULES/01_WANDB_TRACE_ADAPTER/schema.json`). |
+| **Hypothesis link** | H4: Trace chain completeness (REQ→CTRL→TEST→EVID→DECISION) exceeds 95%. |
+| **Adapter** | W&B Trace Adapter (Adapter 01) produces trace logs conforming to the canonical schema; USE_CASE_EVIDENCE documents pilot Root Cause Attribution results. |
+
+### 3.4 Randomization
 
 - Task presentation order: Block-randomized within layers
 - Condition assignment: Latin square design for order effects

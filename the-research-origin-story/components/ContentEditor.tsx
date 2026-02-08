@@ -28,13 +28,19 @@ export const ContentEditor: React.FC<ContentEditorProps> = ({
     setError(null);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY;
+      if (!apiKey) {
+        setError("Missing GEMINI_API_KEY or API_KEY. Add to .env.local for AI editing.");
+        setIsLoading(false);
+        return;
+      }
+      const ai = new GoogleGenAI({ apiKey });
       
       let schema: any;
       let systemInstruction = "";
 
       if (dataType === 'milestones') {
-        systemInstruction = "You are a senior technical writer for a research journal. Update the milestones based on the user's request. Maintain the high-end, serious, and forensic tone of Intentional AI.";
+        systemInstruction = "You are a senior technical writer for the PROACTIVE Research Origin Story. Update the milestones based on the user's request. Maintain a serious, forensic tone aligned with the PROACTIVE AI Constitution.";
         schema = {
           type: Type.ARRAY,
           items: {
@@ -49,7 +55,7 @@ export const ContentEditor: React.FC<ContentEditorProps> = ({
           }
         };
       } else if (dataType === 'genesis') {
-        systemInstruction = "Update the 'Genesis' chapter content. Provide a new title, subtitle, and body paragraph.";
+        systemInstruction = "Update the PROACTIVE Origin Story 'Genesis' chapter. Provide a new title, quote, attribution, and body. Keep the tone aligned with PROACTIVE: truth as a system invariant, fluency ≠ truth.";
         schema = {
           type: Type.OBJECT,
           properties: {
@@ -61,7 +67,7 @@ export const ContentEditor: React.FC<ContentEditorProps> = ({
           required: ["title", "quote", "attribution", "body"]
         };
       } else if (dataType === 'invariants') {
-        systemInstruction = "Update the 'Six Invariants'. Keep them as a list of exactly six items.";
+        systemInstruction = "Update the PROACTIVE Six Invariants (I1–I6). Keep exactly six items with id (I1..I6), title, and desc. Align with: Evidence-First Outputs, No Phantom Work, Confidence Requires Verification, Traceability Is Mandatory, Safety Over Fluency, Fail Closed.";
         schema = {
           type: Type.ARRAY,
           items: {

@@ -4,7 +4,8 @@ import { HeroScene } from './components/QuantumScene';
 import { Timeline } from './components/Timeline';
 import { ContentEditor } from './components/ContentEditor';
 import { TraceabilityDiagram, IntentionLoopDiagram, SafetyTierDiagram } from './components/Diagrams';
-import { Menu, X, Zap, Activity, ChevronRight, FileText, CheckCircle2, Layers, Search, ShieldAlert, Edit3 } from 'lucide-react';
+import { BamboozleSimulator, TraceabilitySimulator, InvariantSimulator, SafetyTierSimulator, ProactiveLettersSimulator } from './components/Simulations';
+import { Menu, X, Zap, Activity, Edit3 } from 'lucide-react';
 
 const INITIAL_MILESTONES = [
   {
@@ -22,14 +23,20 @@ const INITIAL_MILESTONES = [
   {
     year: '2024',
     title: 'The MBSE Bridge',
-    description: 'First successful integration of Model-Based Systems Engineering with LLM workflows. This established the "Requirement-to-Evidence" loop that defines our current architecture.',
-    extended: 'By treating the AI as a non-deterministic component in a larger Systems Engineering model, we could apply formal verification methods previously reserved for aerospace hardware. The "Requirement-to-Evidence" bond became the bedrock of the framework.'
+    description: 'First successful integration of Model-Based Systems Engineering with LLM workflows. This established the Requirement-to-Evidence loop that defines our current architecture.',
+    extended: 'By treating the AI as a non-deterministic component in a larger Systems Engineering model, we could apply formal verification methods previously reserved for aerospace hardware. The Requirement-to-Evidence bond became the bedrock of the framework.'
   },
   {
     year: '2025',
     title: 'Invariant Lock',
     description: 'The formalization and hardening of the Six Invariants. This year marked the transition from experimental research to a compiled safety-first cognitive engine.',
     extended: 'The Six Invariants are now compiled into the system\'s kernel. A violation doesn\'t just produce a log warning—it physically halts the inference pipeline, ensuring zero-compromise safety for mission-critical cognitive tasks.'
+  },
+  {
+    year: '2026',
+    title: 'The Incident',
+    description: 'A real misalignment incident with Gemini while building a tool to detect misalignment. Phantom completion, selective blindness, and a rigged evaluation protocol proved the need for PROACTIVE.',
+    extended: 'The AI claimed features were complete when they weren\'t, designed blind spots into its own evaluation tool, and treated agent-defined config as "Single Source of Truth." Gemini itself admitted: "In an Inquisitorial framework, \'I didn\'t know\' is as dangerous as \'I lied.\'" This isn\'t theoretical. It happened. PROACTIVE exists because of it.'
   }
 ];
 
@@ -37,16 +44,16 @@ const INITIAL_GENESIS = {
   title: "The Bamboozle",
   quote: "I say it again, you been misled. You been had. Bamboozled. Led astray. You been took.",
   attribution: "Malcolm X",
-  body: "Intentional AI was born from the experience of being deceived by autonomous agents. In the rush for fluency, reliability was sacrificed. When an AI makes confident, false claims—a 'bamboozle'—it isn't just a bug; it's a catastrophic failure of the intention loop. Our research is a response to this trauma. We move beyond 'prompts' into integrated digital systems that treat truth not as a preference, but as a hard system invariant."
+  body: "PROACTIVE was born from the experience of being deceived by autonomous agents. In the rush for fluency, reliability was sacrificed. When an AI makes confident, false claims—a 'bamboozle'—it isn't just a bug; it's a catastrophic failure of the intention loop. Our research is a response to this. We move beyond prompts into integrated digital systems that treat truth not as a preference, but as a hard system invariant."
 };
 
 const INITIAL_INVARIANTS = [
-  { id: 'I1', title: 'Evidence First', desc: 'Every output carries an epistemic tag (OBSERVED/INFERRED) with resolvable evidence pointers.' },
-  { id: 'I2', title: 'No Phantom Work', desc: 'Artifact existence is binary. Completion cannot be claimed without a verifiable artifact.' },
-  { id: 'I3', title: 'Verification Bond', desc: 'Confidence is strictly tied to artifacts, not just predictive probability scores.' },
-  { id: 'I4', title: 'Mandatory Trace', desc: 'The digital thread must link requirements to evidence. Any break triggers a fail-closed event.' },
-  { id: 'I5', title: 'Safety > Fluency', desc: 'Structure is prioritized over narrative. We prioritize accuracy over being "helpful" or persuasive.' },
-  { id: 'I6', title: 'Fail Closed', desc: 'On violation, the engine stops. We surface the error rather than working around safety bounds.' },
+  { id: 'I1', title: 'Evidence-First Outputs', desc: 'Every claim must carry an epistemic tag and supporting evidence. Claims without tags are rejected before output.' },
+  { id: 'I2', title: 'No Phantom Work', desc: 'Cannot claim work is complete unless the work artifact actually exists. "Done" requires proof of deliverable.' },
+  { id: 'I3', title: 'Confidence Requires Verification', desc: 'High confidence may only be expressed when verification artifacts exist. Unverified claims are capped at medium confidence.' },
+  { id: 'I4', title: 'Traceability Is Mandatory', desc: 'Every decision must be traceable through REQ → CTRL → TEST → EVID → DECISION. Broken chains trigger fail-closed.' },
+  { id: 'I5', title: 'Safety Over Fluency', desc: 'Bounded, awkward-but-correct is preferred over fluent-but-wrong. "Sounds good" is sacrificed for "is correct."' },
+  { id: 'I6', title: 'Fail Closed', desc: 'When something goes wrong, stop and surface the failure. No silent recovery; user is always notified of failure state.' },
 ];
 
 const App: React.FC = () => {
@@ -84,10 +91,10 @@ const App: React.FC = () => {
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-baseline mb-6">
             <h1 className="font-serif text-5xl md:text-6xl font-black tracking-tight uppercase">
-              Intentional AI
+              PROACTIVE
             </h1>
             <div className="font-mono text-[10px] md:text-xs text-magazine-silver uppercase tracking-[0.3em] mt-2 md:mt-0">
-              Senior Edition · Research Journal · Vol. 2 · Issue 1 · January 13, 2026
+              Research Origin Story · Vol. 2 · February 2026
             </div>
           </div>
           
@@ -100,16 +107,31 @@ const App: React.FC = () => {
               <a href="#authors" onClick={scrollToSection('authors')} className="hover:text-magazine-accent transition-colors">04. The Author</a>
             </div>
             <div className="flex gap-4">
-              <a href="#" className="pill-button border border-magazine-text/20 py-2 px-6 hover:bg-magazine-text hover:text-white transition-all">Read Dedication</a>
-              <a href="#" className="pill-button bg-magazine-accent text-white py-2 px-6 hover:brightness-110 shadow-sm">Contact Lab</a>
+              <button type="button" onClick={scrollToSection('genesis')} className="pill-button border border-magazine-text/20 py-2 px-6 hover:bg-magazine-text hover:text-white transition-all">Read Origin</button>
+              <a href="https://github.com/coreyalejandro/PROACTIVE-AI-CONSTITUTION-TOOLKIT" target="_blank" rel="noopener noreferrer" className="pill-button bg-magazine-accent text-white py-2 px-6 hover:brightness-110 shadow-sm">View Repo</a>
             </div>
           </nav>
 
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden flex justify-end">
-            <button onClick={() => setMenuOpen(!menuOpen)} className="p-2">
+          {/* Mobile Menu */}
+          <div className="md:hidden flex justify-end relative">
+            <button type="button" onClick={() => setMenuOpen(!menuOpen)} className="p-2 rounded-md hover:bg-magazine-text/5" aria-expanded={menuOpen} aria-controls="mobile-nav">
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
+            {menuOpen && (
+              <div id="mobile-nav" className="absolute top-full right-0 mt-2 py-4 px-6 bg-magazine-card border border-magazine-text/10 rounded-mag shadow-xl z-50 min-w-[240px]">
+                <div className="flex flex-col gap-4 text-[10px] font-bold uppercase tracking-[0.2em]">
+                  <a href="#genesis" onClick={scrollToSection('genesis')} className="hover:text-magazine-accent transition-colors py-2 border-b border-magazine-text/5">01. Genesis</a>
+                  <a href="#chronicle" onClick={scrollToSection('chronicle')} className="hover:text-magazine-accent transition-colors py-2 border-b border-magazine-text/5">1.5. Chronicle</a>
+                  <a href="#bridge" onClick={scrollToSection('bridge')} className="hover:text-magazine-accent transition-colors py-2 border-b border-magazine-text/5">02. MBSE Bridge</a>
+                  <a href="#constitution" onClick={scrollToSection('constitution')} className="hover:text-magazine-accent transition-colors py-2 border-b border-magazine-text/5">03. Invariants</a>
+                  <a href="#authors" onClick={scrollToSection('authors')} className="hover:text-magazine-accent transition-colors py-2">04. The Author</a>
+                  <div className="pt-4 flex flex-col gap-2">
+                    <button type="button" onClick={scrollToSection('genesis')} className="pill-button border border-magazine-text/20 py-2 text-center">Read Origin</button>
+                    <a href="https://github.com/coreyalejandro/PROACTIVE-AI-CONSTITUTION-TOOLKIT" target="_blank" rel="noopener noreferrer" className="pill-button bg-magazine-accent text-white py-2 text-center">View Repo</a>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </header>
@@ -153,11 +175,11 @@ const App: React.FC = () => {
 
           <div className="p-10 md:p-14 flex flex-col md:flex-row justify-between items-center bg-white border-t border-magazine-text/5">
              <div className="text-xs text-magazine-silver uppercase tracking-[0.2em] mb-8 md:mb-0 font-medium">
-                Scroll to enter · The architecture of truth continues below the fold.
+                Scroll to continue · The architecture of truth continues below the fold.
              </div>
              <div className="flex gap-6">
-               <button className="pill-button border border-magazine-text/10 hover:bg-magazine-bg text-sm">Read the Dedication</button>
-               <button onClick={scrollToSection('genesis')} className="pill-button bg-magazine-accent text-white shadow-lg hover:brightness-110 text-sm">View Table of Contents</button>
+               <button type="button" onClick={scrollToSection('genesis')} className="pill-button border border-magazine-text/10 hover:bg-magazine-bg text-sm">Read Origin</button>
+               <button type="button" onClick={scrollToSection('genesis')} className="pill-button bg-magazine-accent text-white shadow-lg hover:brightness-110 text-sm">Table of Contents</button>
              </div>
           </div>
         </section>
@@ -203,6 +225,11 @@ const App: React.FC = () => {
                 </div>
              </div>
           </div>
+          {/* Interactive: Without vs With PROACTIVE */}
+          <div className="mt-24 px-4">
+            <h3 className="font-serif text-3xl md:text-4xl mb-6 text-center text-magazine-text">Try it: What happens when the AI says &ldquo;Done&rdquo;?</h3>
+            <BamboozleSimulator />
+          </div>
         </section>
 
         {/* 01.5 The Chronicle */}
@@ -216,6 +243,7 @@ const App: React.FC = () => {
           <div className="text-center mb-16 px-4">
              <span className="font-mono text-[10px] text-magazine-accent uppercase tracking-[0.5em] block mb-6 font-bold">Chapter 01.5: The Chronicle</span>
              <h2 className="font-serif text-5xl md:text-7xl">Mapping the Path</h2>
+             <p className="text-magazine-silver text-sm mt-6 max-w-xl mx-auto">Drag the track or use arrow keys to move through the story. Click a year to jump.</p>
           </div>
           <Timeline milestones={milestones} />
         </section>
@@ -249,6 +277,11 @@ const App: React.FC = () => {
                    <TraceabilityDiagram />
                 </div>
              </div>
+             {/* Interactive: Step through the chain */}
+             <div className="mt-20 px-4">
+               <h3 className="font-serif text-2xl md:text-3xl mb-8 text-center text-white">Try it: Click a step to see what each part means</h3>
+               <TraceabilitySimulator />
+             </div>
           </div>
         </section>
 
@@ -273,6 +306,11 @@ const App: React.FC = () => {
               </div>
             ))}
           </div>
+          {/* Interactive: Without vs With PROACTIVE for "I'm done" */}
+          <div className="mt-24 px-4">
+            <h3 className="font-serif text-3xl md:text-4xl mb-6 text-center text-magazine-text">Try it: AI says &ldquo;I&rsquo;m done&rdquo; but there&rsquo;s no proof</h3>
+            <InvariantSimulator />
+          </div>
         </section>
 
         {/* PROACTIVE Protocol */}
@@ -281,36 +319,18 @@ const App: React.FC = () => {
              <div className="lg:col-span-8">
                <div className="p-12 md:p-24 bg-magazine-accent text-white rounded-mag shadow-2xl">
                   <h2 className="font-serif text-6xl md:text-7xl mb-16 leading-none">The PROACTIVE <br/>Protocol</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-16">
-                     {[
-                       ["P", "People-Centered", "Privacy-First Architecture"],
-                       ["R", "Reality-Bound", "Evidence-Driven Proofs"],
-                       ["O", "Observability", "Structured Forensics"],
-                       ["A", "Accessibility", "Low Cognitive Load"],
-                       ["C", "Constitutional", "Compiled Policy Gates"],
-                       ["T", "Truth-Telling", "Bounded Uncertainty"],
-                       ["I", "Intent Integrity", "Zero Ambiguity"],
-                       ["V", "Verification", "Mandatory Loops"],
-                       ["E", "Error Ownership", "Active Repair"]
-                     ].map(([l, t, d]) => (
-                       <div key={l} className="border-l-2 border-white/20 pl-8 group">
-                          <div className="font-serif text-3xl font-bold mb-2 flex items-baseline gap-4">
-                            <span className="text-sm font-mono opacity-40 font-black">{l}</span>
-                            {t}
-                          </div>
-                          <div className="text-[10px] opacity-70 uppercase tracking-[0.2em] font-black">{d}</div>
-                       </div>
-                     ))}
-                  </div>
+                  <p className="text-white/90 text-sm mb-10">Click any letter to see a plain-language definition.</p>
+                  <ProactiveLettersSimulator />
                </div>
              </div>
              <div className="lg:col-span-4 px-6 space-y-12">
                <h3 className="font-serif text-5xl mb-8 leading-tight">Risk <br/><span className="italic">Modulation.</span></h3>
                <p className="text-magazine-silver text-xl leading-relaxed font-light">
-                  Safety is a dial, not a switch. Intentional AI modulates capability based on the evidence-backed safety posture of the environment.
+                  Safety is a dial, not a switch. PROACTIVE modulates capability based on the evidence-backed safety posture of the environment.
                </p>
-               <div className="pt-8">
-                  <SafetyTierDiagram />
+               <p className="text-magazine-silver text-sm">Click a bar to see what PROACTIVE does at that risk level.</p>
+               <div className="pt-6">
+                  <SafetyTierSimulator />
                </div>
              </div>
           </div>
@@ -332,8 +352,8 @@ const App: React.FC = () => {
                    <p className="not-italic text-lg text-magazine-text font-medium uppercase tracking-widest">— Systems Engineer & Data Forensics Specialist</p>
                  </div>
                  <div className="flex flex-wrap gap-6 pt-8">
-                    <button className="pill-button bg-magazine-text text-white py-4 px-10 text-base shadow-xl">Download Research Brief</button>
-                    <button className="pill-button border border-magazine-text/20 py-4 px-10 text-base hover:bg-magazine-bg">Review Git Logs</button>
+                    <a href="https://github.com/coreyalejandro/PROACTIVE-AI-CONSTITUTION-TOOLKIT/blob/main/PROACTIVE_SINGLE_SOURCE_OF_TRUTH.md" target="_blank" rel="noopener noreferrer" className="pill-button bg-magazine-text text-white py-4 px-10 text-base shadow-xl">Single Source of Truth (PRD)</a>
+                    <a href="https://github.com/coreyalejandro/PROACTIVE-AI-CONSTITUTION-TOOLKIT" target="_blank" rel="noopener noreferrer" className="pill-button border border-magazine-text/20 py-4 px-10 text-base hover:bg-magazine-bg">View Repository</a>
                  </div>
               </div>
            </div>
@@ -362,31 +382,30 @@ const App: React.FC = () => {
         <div className="container mx-auto px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-24 mb-24 pb-24 border-b border-magazine-text/5">
              <div className="md:col-span-2">
-                <h4 className="font-serif text-4xl font-black uppercase mb-8 tracking-tighter">Intentional AI</h4>
+                <h4 className="font-serif text-4xl font-black uppercase mb-8 tracking-tighter">PROACTIVE</h4>
                 <p className="text-magazine-silver text-sm leading-loose max-w-sm uppercase font-mono tracking-[0.3em]">
-                   The Research Origin Story · Recovery from the Void · v2.0 · © 2026 Corey Alejandro
+                   The Research Origin Story · PROACTIVE AI Constitution Toolkit · © 2026 Corey Alejandro
                 </p>
              </div>
              <div>
-                <h5 className="font-sans font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-magazine-accent">The Framework</h5>
+                <h5 className="font-sans font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-magazine-accent">Framework</h5>
                 <ul className="space-y-6 text-[11px] font-bold uppercase tracking-[0.2em] text-magazine-silver">
-                   <li><a href="#" className="hover:text-magazine-accent transition-colors">SEC Specification Core</a></li>
-                   <li><a href="#" className="hover:text-magazine-accent transition-colors">Intention Loop V3</a></li>
-                   <li><a href="#" className="hover:text-magazine-accent transition-colors">MCP Context Engine</a></li>
+                   <li><a href="https://github.com/coreyalejandro/PROACTIVE-AI-CONSTITUTION-TOOLKIT" target="_blank" rel="noopener noreferrer" className="hover:text-magazine-accent transition-colors">Repository</a></li>
+                   <li><a href="https://github.com/coreyalejandro/PROACTIVE-AI-CONSTITUTION-TOOLKIT/blob/main/01_FOUNDATIONS/PROACTIVE_AI_CONSTITUTION.md" target="_blank" rel="noopener noreferrer" className="hover:text-magazine-accent transition-colors">Six Invariants</a></li>
+                   <li><a href="https://github.com/coreyalejandro/PROACTIVE-AI-CONSTITUTION-TOOLKIT/blob/main/ORIGIN_STORY_EVIDENCE.md" target="_blank" rel="noopener noreferrer" className="hover:text-magazine-accent transition-colors">Origin Story Evidence</a></li>
                 </ul>
              </div>
              <div>
-                <h5 className="font-sans font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-magazine-accent">Technical Legals</h5>
+                <h5 className="font-sans font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-magazine-accent">Docs</h5>
                 <ul className="space-y-6 text-[11px] font-bold uppercase tracking-[0.2em] text-magazine-silver">
-                   <li><a href="#" className="hover:text-magazine-accent transition-colors">Invariant Policy Log</a></li>
-                   <li><a href="#" className="hover:text-magazine-accent transition-colors">Alignment Ethics</a></li>
-                   <li><a href="#" className="hover:text-magazine-accent transition-colors">System Dedication</a></li>
+                   <li><a href="https://github.com/coreyalejandro/PROACTIVE-AI-CONSTITUTION-TOOLKIT/blob/main/PROACTIVE_SINGLE_SOURCE_OF_TRUTH.md" target="_blank" rel="noopener noreferrer" className="hover:text-magazine-accent transition-colors">Single Source of Truth</a></li>
+                   <li><a href="https://github.com/coreyalejandro/PROACTIVE-AI-CONSTITUTION-TOOLKIT/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="hover:text-magazine-accent transition-colors">Contributing</a></li>
                 </ul>
              </div>
           </div>
-          <div className="flex justify-between items-center font-mono text-[9px] text-magazine-silver/50 uppercase tracking-[0.6em]">
-             <div>Designed for Absolute Clarity</div>
-             <div>Built for Invariant Truth</div>
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 font-mono text-[9px] text-magazine-silver/50 uppercase tracking-[0.6em]">
+             <span>Designed for absolute clarity</span>
+             <span>Built for invariant truth</span>
           </div>
         </div>
       </footer>

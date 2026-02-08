@@ -1,3 +1,9 @@
+# REFACTORED PROACTIVE AI CONSTITUTION TOOLKIT
+
+**This document is the canonical plan of action.** Execution follows this plan. Nothing less.  
+**Execution tracker:** `REFACTORED_PLAN_EXECUTION.md` — phases, deliverables, validation gates, next actions.
+
+---
 
 # REVIEW of PROACTIVE AI CONSTITUTION TOOLKIT
 

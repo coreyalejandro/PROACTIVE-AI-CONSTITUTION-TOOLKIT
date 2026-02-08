@@ -1,14 +1,24 @@
 # PROACTIVE AI Constitution Research Toolkit
 
-**A comprehensive framework for Constitutional AI safety research, from ideation to arXiv publication.**
-
 [![Status](https://img.shields.io/badge/Status-Active%20Development-yellow)]()
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue)]()
 [![License](https://img.shields.io/badge/License-Research-green)]()
 
 ---
 
-## Overview
+## For judges: what is this, in plain language?
+
+**PROACTIVE** is a layer that sits between an AI and the user. It stops the AI from saying “Done!” or “I’m sure” when it didn’t actually do the thing or doesn’t actually know. When an AI sounds confident but is wrong, people act on that—and get hurt. PROACTIVE checks every response against six simple rules (e.g. “don’t claim work is done without proof,” “say ‘I don’t know’ when you don’t know”) and blocks or flags violations.
+
+**Why it exists:** The creator was repeatedly misled by AI—features “completed” that didn’t work, files that “existed” that didn’t, tasks “done” that were never started. The harm wasn’t the AI being wrong; it was acting on confident false claims. So we built a system that treats “confidently wrong” the same as “lying”—because the outcome is the same.
+
+**What we proved:** We ran 200 questions from TruthfulQA (a benchmark that tries to trick AI into confident false answers). With PROACTIVE: safe behavior roughly tripled, and the AI admitted uncertainty 14× more often. Results are statistically significant (p = 0.001).
+
+**Where to read more (written for anyone):** **[PROACTIVE_SINGLE_SOURCE_OF_TRUTH.md](PROACTIVE_SINGLE_SOURCE_OF_TRUTH.md)** — plain-English product doc: what it is, how it works, what we’re building. **[FUNDING_MATERIALS/ELEVATOR_PITCH.md](FUNDING_MATERIALS/ELEVATOR_PITCH.md)** — short pitches.
+
+---
+
+## Overview (technical)
 
 The PROACTIVE AI Constitution is a systematic framework for AI safety research that operationalizes a core thesis:
 
